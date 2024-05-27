@@ -96,7 +96,7 @@ export default function CardWrapper() {
                     ? "w-[120px] lg:w-[140px] xl:w-[160px]"
                     : "w-[100px] lg:w-[110px]"
                 }  xl:w-[120px] z-50 `}
-                src={counter === 25 ? card.svgWhite : card.icon}
+                src={isBgActived ? card.svgWhite : card.icon}
               />
             )}
           </div>
