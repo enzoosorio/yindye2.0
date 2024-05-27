@@ -11,8 +11,34 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'microphone-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-microphone-as-icon.jpg')",
+        'monalisa-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-monalisa-as-icon.jpg')",
+        'cat-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-park-cat-as-icon.jpg')"
       },
+
+      fontSize: {
+        '3xl': '2.1rem',
+        '4.5xl': '2.7rem'
+      }
+    },
+
+
+  },
+  variants: {
+    extend: {
+      clipPath: ['responsive', 'hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.clip-circle': {
+          'clip-path': 'circle(20.8% at 50% 50%)',
+        },
+        '.clip-circle-full': {
+          'clip-path': 'circle(70.7% at 50% 50%)',
+        },
+      })
+    }
+  ],
 };
