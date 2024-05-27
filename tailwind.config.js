@@ -11,9 +11,9 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        'microphone-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-microphone-as-icon.jpg')",
-        'monalisa-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-monalisa-as-icon.jpg')",
-        'cat-bg': "url('../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-park-cat-as-icon.jpg')"
+        'microphone-bg': "url('src/assets/imagenesyotrosrecursos/as-icon-parte-below-hero/fondo-niebla-dinamica-realista.jpg')",
+        'monalisa-bg': "url('src/assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-monalisa-as-icon.jpg')",
+        'cat-bg': "url('src/assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-park-cat-as-icon.jpg')"
       },
 
       fontSize: {

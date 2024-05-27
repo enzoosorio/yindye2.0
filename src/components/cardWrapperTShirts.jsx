@@ -41,13 +41,13 @@ export default function CardWrapperTShirt() {
   return (
     <section
       ref={wrapperRef}
-      className="w-11/12 md:w-full  2xl:w-[1080px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center items-center mb-10 mt-20 mx-auto rounded-lg py-5 md:py-0 "
+      className="w-11/12 md:w-full  2xl:w-[1080px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center items-center mb-10 mt-20 mx-auto rounded-lg py-5 md:py-0"
     >
       {infoTShirts &&
         infoTShirts.map((tshirt) => (
           <div
             key={tshirt.id}
-            className="w-full flex flex-col items-center justify-center rounded-xl shadow-xl pb-7"
+            className="w-full flex flex-col items-center justify-center rounded-xl shadow-xl hover:shadow-2xl cursor-pointer transition-all pb-7"
           >
             <Image src={tshirt.image} alt={tshirt.alt} />
             <article className="flex flex-col gap-5 text-center pt-5">

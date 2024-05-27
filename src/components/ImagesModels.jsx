@@ -25,14 +25,11 @@ import marley6 from "../assets/imagenesyotrosrecursos/marly_modelo/marly6.webp";
 import marley7 from "../assets/imagenesyotrosrecursos/marly_modelo/marly7.webp";
 import marley8 from "../assets/imagenesyotrosrecursos/marly_modelo/marly8.webp";
 import marley9 from "../assets/imagenesyotrosrecursos/marly_modelo/marly9.webp";
-import useIsVisible from "@/utils/useIsVisible";
 
 export default function ImagesModels() {
-  const [isReproducing, setIsReproducing] = useState(true);
+  const [isReproducing, setIsReproducing] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
-  const wrapperRef = useRef();
-  const isVisible = useIsVisible(wrapperRef);
 
   const farroSofiaPhotos = [
     { id: 1, src: farrosofia1, altImg: "farro and sofia models photo 1" },
@@ -59,7 +56,7 @@ export default function ImagesModels() {
   ];
 
   useEffect(() => {
-    if (isReproducing && isVisible) {
+    if (isReproducing) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex(
           (prevIndex) => (prevIndex + 1) % farroSofiaPhotos.length
@@ -75,13 +72,10 @@ export default function ImagesModels() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isReproducing, farroSofiaPhotos.length, isVisible]);
+  }, [isReproducing, farroSofiaPhotos.length]);
 
   return (
-    <section
-      className="w-11/12 md:w-full 2xl:w-[1080px] grid grid-cols-2 grid-rows-5 gap-x-2 lg:gap-x-10 gap-y-10 mb-10 mt-14 "
-      ref={wrapperRef}
-    >
+    <section className="w-11/12 md:w-full 2xl:w-[1080px] grid grid-cols-2 grid-rows-5 gap-x-2 lg:gap-x-10 gap-y-10 mb-10 mt-14 ">
       <div className="col-span-1 row-span-4">
         <Image
           src={farroSofiaPhotos[currentIndex].src}
