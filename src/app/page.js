@@ -12,12 +12,6 @@ export default function Home() {
   return (
     <main className={`w-full md:w-3/4 mx-auto  mt-24 flex flex-col items-center justify-center ${jost_font.className}`}>
       <Image src={Banner} alt="banner yindyeart" className="w-[576px] md:w-[577px] lg:w-[746px] xl:w-[903px] 2xl:w-[1080px]" />
-      <div className="my-24 bg-monalisa-bg bg-contain">
-        <Image src={monalisa} alt="monalisa icon" className="w-44 p-6" />
-      </div>
-      <div className="my-24 bg-red-700">
-        <Image src={microfono} alt="monalisa icon" width={120} />
-      </div>
       <h2 className="mt-[68px] w-full 2xl:w-[1080px] text-center md:text-left text-2xl lg:text-3xl">Un estilo fuera de la <span className="text-lime-400/80">rutina.</span></h2>
       <CardWrapper />
       <h2 className="mt-[68px] w-full 2xl:w-[1080px] text-center md:text-left text-2xl lg:text-3xl">Todo empezó con el<span className="text-orange-400/80">&nbsp;TIE DYE.</span></h2>
