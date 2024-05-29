@@ -6,6 +6,7 @@ import Logo from "../assets/imagenesyotrosrecursos/parte_del_logo/Logo_transpare
 import Logo_cat from "../assets/imagenesyotrosrecursos/parte_del_logo/gato_with_shadow.jpg";
 import Link from "next/link";
 import clsx from "clsx";
+import { hepta_slab_font } from "@/utils/fonts";
 
 export default function Navbar() {
   const [isPressed, setIsPressed] = useState(false);
@@ -13,7 +14,12 @@ export default function Navbar() {
   return (
     <nav className="relative flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
       <div className="relative">
-        <Link href={"/"}>
+        <Link
+          onClick={() => {
+            isPressed ? setIsPressed(!isPressed) : "";
+          }}
+          href={"/"}
+        >
           <Image src={Logo} width={140} />
           <Image
             src={Logo_cat}
@@ -74,21 +80,52 @@ export default function Navbar() {
       </button>
       <ul
         className={clsx(
-          "md:hidden absolute top-24 w-full h-96 flex flex-col items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all",
+          `md:hidden absolute top-24 w-full h-96 flex flex-col items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
           {
             "opacity-100 z-10 left-0": isPressed,
             "opacity-0 -z-50 left-full": !isPressed,
           }
         )}
       >
-        <li className="text-xl hover:text-2xl transition-all">
-          <Link href={"/2024_collection"}>2024 collection</Link>
+        <li className="text-xl font-bold hover:text-2xl transition-all">
+          <Link
+            onClick={() => {
+              setIsPressed(!isPressed);
+            }}
+            href={"/"}
+          >
+            Inicio
+          </Link>
         </li>
-        <li className="text-xl hover:scale-110 transition-all">
-          <Link href={"/artgallery"}>ArtGallery</Link>
+        <li className="text-xl font-bold hover:text-2xl transition-all">
+          <Link
+            onClick={() => {
+              setIsPressed(!isPressed);
+            }}
+            href={"/2024_collection"}
+          >
+            2024 collection
+          </Link>
         </li>
-        <li className="text-xl hover:scale-110 transition-all">
-          <Link href={"/artblog"}>ArtBlog</Link>
+        <li className="text-xl font-bold hover:scale-110 transition-all">
+          <Link
+            onClick={() => {
+              setIsPressed(!isPressed);
+            }}
+            href={"/artgallery"}
+          >
+            ArtGallery
+          </Link>
+        </li>
+        <li className="text-xl font-bold hover:scale-110 transition-all">
+          <Link
+            onClick={() => {
+              setIsPressed(!isPressed);
+            }}
+            href={"/artblog"}
+          >
+            ArtBlog
+          </Link>
         </li>
       </ul>
     </nav>

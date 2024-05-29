@@ -36,7 +36,7 @@ export default function Gallery() {
         ref={textRef}
         className={`absolute top-5 ${
           isTextVisible ? "left-0" : "left-full"
-        } w-full 2xl:w-[1080px] text-3xl mx-auto text-sky-400 transition-all duration-700`}
+        } w-full text-center md:text-left 2xl:w-[1080px] text-3xl mx-auto text-sky-400 transition-all duration-700`}
       >
         ArtGallery
       </h1>
