@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
     <section className="relative flex w-11/12 md:w-full  2xl:w-[1080px] mx-auto items-center justify-center mt-20  mb-3 gap-5 ">
-      <h2 className="w-20  text-md">
+      <h2 className="w-20 text-md">
         YinDye - 2023 &copy; Todos los derechos reservados.
       </h2>
       <div className="flex flex-col items-center justify-center w-3/12">
-        <small className="absolute text-center -top-10">
+        <small className="absolute text-center -top-10 w-16 md:w-auto ">
           <b>Redes sociales</b>
         </small>
         <div className="flex flex-col gap-7 md:gap-5">
