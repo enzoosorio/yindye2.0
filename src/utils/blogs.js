@@ -1,16 +1,36 @@
 import imagenExample from "../assets/imagenesyotrosrecursos/banners/banner_gallery_3.webp";
-
-
+import portadaBlog1 from '../assets/imagenesyotrosrecursos/blogImages/portadas/foto-portada-blog-llama.webp'
+import fotoBlog1 from '../assets/imagenesyotrosrecursos/blogImages/foto-blog-llama.webp';
 
 export const blogsArray = [
     {
         id: "blog001",
-        src: imagenExample,
+        src: portadaBlog1,
         alt: "Descripción de la imagen del blog 1",
-        title: "Titulo del blog 1",
+        title: "Arte, ¿Pasión o dinero?",
         creator: "Enzo Osorio (@enzoosorioortiz)",
         createdAt: "5h ago",
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique dicta iure quos excepturi veniam necessitatibus, ab quo delectus fugit corporis possimus, porro temporibus labore unde omnis laborum nemo voluptatum non rerum. Illum perspiciatis necessitatibus adipisci voluptatem eaque impedit pariatur laboriosam exercitationem. Quam vero sunt minima itaque corrupti modi hic inventore sequi ex fugit cupiditate tempora, quia alias incidunt exercitationem, tempore, accusamus quidem nemo! Esse optio quas aliquid inventore! Sed amet nesciunt fuga neque blanditiis ab impedit placeat similique dignissimos, repellat aliquam error aspernatur tempora laudantium ex quam beatae voluptate dolorum soluta quae dicta saepe! Atque adipisci officiis ab minima distinctio.'
+        description: `Ayer 28 de mayo estuve paseando con mi familia 
+        por una zona muy concurrida de Miraflores, donde pudimos observar 
+        muchos stands en dos ferias artesanales, las cuales están relativamente 
+        cerca cada una para no ser las mismas. Me sorprendió ver la cantidad de 
+        personas interesadas en los productos ofrecidos por los artesanos, ya 
+        sean turistas como peruanos.
+        <br/> <br/> <b>Vasijas, imanes, llaveros, cuadros, peluches, entre otras cosas</b> 
+        son ofrecidas; todo relacionado con la cultura peruana de los andes 
+        (por ejemplo, no se ofrecen comida de la selva, ni recuerdos en forma 
+            de los distintos animales exóticos de allá). Seguimos caminando a 
+            la segunda feria, y llegamos hasta el stand de un señor mayor, que 
+            realizaba retratos y además vendía pinturas en cuadros. Me quedé 
+            pensando en porqué un cuadro de llama con la representativa Inka Cola 
+            costaba <b>800 soles</b>. A pesar de que sea un cuadro grande, pienso que 
+            quizá pueda ser menos, pero también tuve en consideración la zona, 
+            la frecuencia de turistas y zonales, pues los turistas no podrán 
+            pasar esos cuadros de 90x90 aprox. en el aeropuerto. Es interesante 
+            saber que el arte es usado como forma de expresión, pero mayormente 
+            se ofrece en precios elevados ya sea por necesidad o aprovechamiento. 
+            Igualmente le tomé la foto a esa llama, y no se ve nada mal.`,
+        aditionalImage: fotoBlog1
     },
     {
         id: "blog002",
