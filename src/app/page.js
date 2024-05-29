@@ -19,7 +19,7 @@ export default function Home() {
       <ImageCat />
       <h2 className="mt-[50px] w-11/12 2xl:w-[1080px] text-pretty md:w-full text-center md:text-left text-2xl lg:text-3xl">Agradecemos a la gente que nos ayuda a hacer crecer esta comunidad 🤍</h2>
       <ImagesModels />
-      <h2 className="mt-[50px] w-11/12 2xl:w-[1080px] text-pretty md:w-full text-center md:text-left text-2xl lg:text-3xl">Mira nuestro ultimo video de <span className="text-red-600">Youtube.</span> </h2>
+      <h2 className="mt-[50px] w-11/12 2xl:w-[1080px] text-pretty md:w-full text-center md:text-left text-2xl lg:text-3xl">Mira nuestro último video de <span className="text-red-600">Youtube.</span> </h2>
     </main>
   );
 }
