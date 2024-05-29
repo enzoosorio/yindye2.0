@@ -57,7 +57,11 @@ export default function CardBlogsWrapper() {
     <section className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-14 flex items-center justify-center flex-wrap gap-5">
       {blogs &&
         blogs.map((blog) => (
-          <div className="w-auto md:w-[48%] border-2 shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform">
+          /* TODO : colocar la etiqueta LINK en cada una de los blogs para redirigir a la pagina de cada blog. */
+          <div
+            key={blog.id}
+            className="w-auto md:w-[48%] border-2 shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
+          >
             <Image src={blog.src} alt={blog.alt} className="w-full" />
             <div className="flex flex-col p-2 gap-2">
               <h5 className="text-xl font-bold">{blog.title}</h5>
