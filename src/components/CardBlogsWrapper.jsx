@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { blogsArray } from "@/utils/blogs";
 import Image from "next/image";
-export default function CardBlogsWrapper() {
-  const blogs = blogsArray;
+export default function CardBlogsWrapper({ searchindexparam }) {
+  const blogs = [...blogsArray];
+
+  console.log(searchindexparam);
+
+  if (searchindexparam === "reciente") {
+    blogs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else if (searchindexparam === "recomendado") {
+    blogs.sort((a, b) => b.rating - a.rating);
+  }
 
   return (
     <section className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-14 flex items-center justify-center flex-wrap gap-5">

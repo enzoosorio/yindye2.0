@@ -97,6 +97,7 @@ export default function Navbar() {
             Inicio
           </Link>
         </li>
+
         <li className="text-xl font-bold hover:text-2xl transition-all">
           <Link
             onClick={() => {
