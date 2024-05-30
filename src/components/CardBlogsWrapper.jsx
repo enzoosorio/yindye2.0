@@ -3,13 +3,17 @@ import { blogsArray } from "@/utils/blogs";
 import Image from "next/image";
 export default function CardBlogsWrapper({ searchindexparam }) {
   const blogs = [...blogsArray];
-
-  console.log(searchindexparam);
+  const parseDate = (dateString) => {
+    const [day, month, year] = dateString.split("-");
+    return new Date(`${year}-${month}-${day}`);
+  };
 
   if (searchindexparam === "reciente") {
-    blogs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    blogs.sort((a, b) => parseDate(b.createdAt) - parseDate(a.createdAt));
   } else if (searchindexparam === "recomendado") {
     blogs.sort((a, b) => b.rating - a.rating);
+  } else if (searchindexparam === "antiguo") {
+    blogs.sort((a, b) => parseDate(a.createdAt) - parseDate(b.createdAt));
   }
 
   return (

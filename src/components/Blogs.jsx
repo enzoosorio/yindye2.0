@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import CardBlogsWrapper from "./CardBlogsWrapper";
+import { useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Blogs() {
@@ -42,6 +41,16 @@ export default function Blogs() {
             }`}
           >
             Más reciente
+          </li>
+          <li
+            onClick={handleSearchParams("antiguo")}
+            className={`px-1 py-2 rounded-xl text-sm lg:text-base transition-all ${
+              searchParams.get("searchindex") === "antiguo"
+                ? "bg-slate-100 font-bold"
+                : "bg-slate-300 cursor-pointer hover:font-bold hover:bg-slate-200"
+            }`}
+          >
+            Más antiguo
           </li>
           {/* <li
             onClick={handleSearchParams("visto")}

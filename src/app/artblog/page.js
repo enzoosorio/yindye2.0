@@ -10,8 +10,6 @@ export default function ArtBlog({ searchParams }) {
 
     const searchIndex = searchParams?.searchindex;
 
-    console.log(searchIndex)
-
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
             <Image src={BannerFarro} alt="banner model farro" className="w-full 2xl:w-[1080px] mx-auto" />
