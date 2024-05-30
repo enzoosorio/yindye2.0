@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <nav className="relative flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
+    <nav className="relative  flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
       <div className="relative">
         <Link
           onClick={() => {
@@ -80,13 +80,32 @@ export default function Navbar() {
       </button>
       <ul
         className={clsx(
-          `md:hidden absolute top-24 w-full h-96 flex flex-col items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
+          `md:hidden fixed top-0 w-full h-screen flex flex-col items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
           {
-            "opacity-100 z-10 left-0": isPressed,
+            "opacity-100 z-[100] left-0": isPressed,
             "opacity-0 -z-50 left-full": !isPressed,
           }
         )}
       >
+        <button
+          onClick={() => {
+            setIsPressed(!isPressed);
+          }}
+          className="absolute top-[44px] right-7"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 56 56"
+            className="p-1"
+          >
+            <path
+              fill="#ffffff"
+              d="M10.023 43.023c-.796.797-.82 2.157 0 2.954c.82.796 2.157.796 2.977 0l15-15l15 15c.797.796 2.156.82 2.977 0c.796-.82.796-2.157 0-2.954L30.953 28l15.024-15c.796-.797.82-2.156 0-2.953c-.844-.82-2.18-.82-2.977 0l-15 15l-15-15c-.82-.82-2.18-.844-2.977 0c-.796.82-.796 2.156 0 2.953l15 15Z"
+            />
+          </svg>
+        </button>
         <li className="text-xl font-bold hover:text-2xl transition-all">
           <Link
             onClick={() => {
