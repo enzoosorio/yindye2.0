@@ -40,7 +40,7 @@ export default function Gallery() {
       >
         ArtGallery
       </h1>
-      <div className="w-full 2xl:w-[1080px] grid grid-cols-4 mx-auto mt-36 mb-20 gap-2 ">
+      <div className="w-full 2xl:w-[1080px] grid grid-cols-4 mx-auto mt-36 mb-20 gap-2 p-2 md:p-0">
         <Image
           ref={image1Ref}
           src={Gallery1}

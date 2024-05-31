@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <section className="relative flex w-11/12 md:w-full  2xl:w-[1080px] mx-auto items-center justify-center mt-20  mb-3 gap-5 ">
-      <h2 className="w-20 text-md">
+      <h2 className="w-20 text-sm md:text-base ">
         YinDye - 2023 &copy; Todos los derechos reservados.
       </h2>
       <div className="flex flex-col items-center justify-center w-3/12">
@@ -11,8 +11,7 @@ export default function Footer() {
         <div className="flex flex-col gap-7 md:gap-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            className="w-6 h-6 md:w-8 md:h-8"
             viewBox="0 0 24 24"
           >
             <path
@@ -22,8 +21,7 @@ export default function Footer() {
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            className="w-6 h-6 md:w-8 md:h-8"
             viewBox="0 0 24 24"
           >
             <path
@@ -33,8 +31,7 @@ export default function Footer() {
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            className="w-6 h-6 md:w-8 md:h-8"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -46,16 +43,18 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center w-4/12 ">
-        <small className="absolute text-center -top-10">
-          <b>Servicio - Contacto</b>
+        <small className="absolute text-center -top-12 md:-top-10  w-20 md:w-auto">
+          <b>
+            Servicio <span className="hidden md:inline">-</span> Contacto
+          </b>
         </small>
-        <div className="text-sm flex flex-col items-center justify-center text-center gap-6">
-          <p>Pedidos tie dye personalizados</p>
+        <div className="text-xs md:text-sm flex flex-col items-center justify-center text-center gap-6">
+          <p className="">Pedidos tie dye personalizados</p>
           <p>Colabora con nosotros</p>
-          <p>Preguntas frecuentes</p>
+          <p className=" w-1/2 sm:w-full">Preguntas frecuentes</p>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center gap-8 text-sm w-3/12  text-center">
+      <div className="flex flex-col items-center justify-center gap-8 text-xs md:text-sm w-3/12  text-center">
         <p>Términos y condiciones</p>
         <p>Política de cookies</p>
       </div>
