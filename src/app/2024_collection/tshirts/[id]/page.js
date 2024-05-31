@@ -60,12 +60,12 @@ export default function IndividualTshirt() {
     const sizes = tshirt.sizes;
 
     return (
-        <section className="relative w-11/12 2xl:w-[1200px] md:h-[calc(100vh-140px)] mx-auto mt-24 flex flex-col md:flex-row justify-center items-start gap-14 xl:gap-28">
-            <div className={`hidden xl:flex flex-col gap-5 w-1/3 lg:w-[264px] h-full  overflow-hidden  ${isPressed ? 'clip-inset-full-care overflow-y-visible' : 'clip-inset-small-care'} border-2 p-2 `}>
+        <section className="relative w-11/12 2xl:w-[1200px] md:h-[calc(100vh-140px)] mx-auto mt-24 flex flex-col md:flex-row justify-center items-start gap-14">
+            <div className={`hidden lg:flex flex-col gap-5 w-1/3 lg:w-[314px] h-full  overflow-hidden  ${isPressed ? 'clip-inset-full-care overflow-y-visible' : 'clip-inset-small-care'} border-2 p-2 `}>
                 <h3 className="mt-5">
                     CUIDADOS & ORIGEN
                 </h3>
-                <h3 className="text-sm mt-10">
+                <h3 className="text-sm mt-1">
                     CUIDADOS
                     Cuidar de tus prendas es cuidar del medioambiente.
                     <p className={`cursor-pointer font-bold underline my-3 tracking-wide ${!isPressed ? 'block' : 'hidden'}`} onClick={() => { setIsPressed(!isPressed) }}>Ver más</p>
@@ -76,7 +76,7 @@ export default function IndividualTshirt() {
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, itaque. Autem soluta porro atque consequatur blanditiis mollitia modi nostrum ex hic laudantium optio fugit unde quo excepturi praesentium ducimus repellendus, odit voluptas ipsa quisquam, nemo nesciunt laboriosam, tempora id. Modi.</p>
 
                 </h3>
-                <div className="flex flex-col gap-5 w-max ml-5 mb-5 ">
+                <div className="flex flex-col gap-5 w-max ml-2 mb-5 ">
                     {tshirtCares && tshirtCares.map(care => (
                         <div key={care.id} className="flex gap-4 justify-start items-center">
                             <Image src={care.iconCare} alt={`care ${care.id}`} width={16} height={16} />
