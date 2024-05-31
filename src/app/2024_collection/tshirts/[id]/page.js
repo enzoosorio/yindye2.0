@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import Whatsapp from '../../../../assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg'
 
 export default function IndividualTshirt() {
+
+    // TODO : ACOMODAR TODO EL CODIGO PARA TENER MAS COMPONENTES Y NO TENER EL USE CLIENT ACA EN LA MISMO NUCLEO DE LA PAGINA.
     const shirtImagesWrapperRef = useRef(null);
     const pathname = usePathname()
     const [isPressed, setIsPressed] = useState(false);
@@ -99,8 +101,8 @@ export default function IndividualTshirt() {
                 <h4>S/{tshirt.precio}</h4>
                 <p>{tshirt.descriptionTshirt}</p>
                 <div className="grid grid-cols-2 grid-rows-2  p-4 w-full gap-2 my-3">
-                    {sizes.map(size => (
-                        <p className={`col-span-1  row-span-1 px-3 py-1 text-center border border-black hover:scale-105 transition-all ${size.isAvailable ? 'font-bold cursor-pointer' : 'bg-slate-100 text-gray-700'} `}>{size.size}</p>
+                    {sizes.map((size, index) => (
+                        <p key={index} className={`col-span-1  row-span-1 px-3 py-1 text-center border border-black hover:scale-105 transition-all ${size.isAvailable ? 'font-bold cursor-pointer' : 'bg-slate-100 text-gray-700'} `}>{size.size}</p>
                     ))}
                 </div>
                 <button className="flex gap-3 bg-slate-500 w-max mx-auto rounded-xl px-5 py-[6px] hover:bg-slate-600 transition-colors text-white">
