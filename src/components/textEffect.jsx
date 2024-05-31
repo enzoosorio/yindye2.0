@@ -18,8 +18,11 @@ export default function TextEffect({ children }) {
         }`}
       >
         {arrayChildren &&
-          arrayChildren.map((letter) => (
-            <span className="hover:text-4xl hover:text-blue-700 lg:hover:text-4.5xl transition-colors duration-75">
+          arrayChildren.map((letter, index) => (
+            <span
+              key={index}
+              className="hover:text-4xl hover:text-blue-700 lg:hover:text-4.5xl transition-colors duration-75"
+            >
               {letter}
             </span>
           ))}
