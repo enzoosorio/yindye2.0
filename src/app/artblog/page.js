@@ -13,7 +13,14 @@ export default function ArtBlog({ searchParams }) {
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
             <Image src={BannerFarro} alt="banner model farro" className="w-full 2xl:w-[1080px] mx-auto" />
-            <TextEffect />
+            <TextEffect>ArtBlog</TextEffect>
+            <h2
+                className={`mt-[20px] 2xl:w-[1080px] text-center md:text-left text-lg lg:text-xl text-pretty font-bold text-gray-500 w-11/12 md:w-full mx-auto transition-opacity duration-[1000ms]`}
+            >
+                En esta sección queremos expresarnos y dar a conocer un poco más los
+                estilos de arte que podemos hacer, y que tú también puedes. Súmate a
+                #freeart #yindyeart
+            </h2>
             <div className="w-11/12 md:w-full mx-auto mt-24 2xl:w-[1080px] ">
                 <Blogs searchIndex={searchIndex} />
                 <CardBlogsWrapper searchindexparam={searchIndex} />
