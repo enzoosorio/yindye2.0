@@ -39,6 +39,12 @@ module.exports = {
         '.clip-circle-full': {
           'clip-path': 'circle(70.7% at 50% 50%)',
         },
+        '.clip-inset-small-care': {
+          'clip-path': 'inset(0 0 50% 0)',
+        },
+        '.clip-inset-full-care': {
+          'clip-path': 'inset(0 0 0 0)',
+        },
       })
     }
   ],

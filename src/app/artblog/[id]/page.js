@@ -11,7 +11,7 @@ export default function IndividualBlog() {
     const individualBlog = blogsArray.find(blog => blog.id === idPathname);
 
     if (!individualBlog) {
-        return <p>Blog no encontrado</p>;
+        return <p className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-24 text-center">Blog no encontrado.</p>;
     }
 
     return (

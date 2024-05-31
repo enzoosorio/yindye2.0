@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <nav className="relative  flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
+    <nav className="relative flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
       <div className="relative">
         <Link
           onClick={() => {
