@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from 'tailwindcss'
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -46,6 +47,33 @@ module.exports = {
           'clip-path': 'inset(0 0 0 0)',
         },
       })
+      const newUtilities = {
+        ".scrollbar-thin": {
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgb(31 29 29) white"
+        },
+        ".scrollbar-webkit": {
+          "&::-webkit-scrollbar": {
+            width: "5px",
+            height: "8px",
+            background: "#aaa"
+          },
+          "&::-webkit-scrollbar-track": {
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "rgb(31 41 55)",
+            borderRadius: "10px",
+            border: "1px solid white"
+          },
+        },
+        ".scrollbar-hide-buttons": {
+          "&::-webkit-scrollbar-button": {
+            display: 'none'
+          }
+        }
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
     }
   ],
 };
