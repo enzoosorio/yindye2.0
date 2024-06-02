@@ -52,16 +52,6 @@ export default function Blogs() {
           >
             Más antiguo
           </li>
-          {/* <li
-            onClick={handleSearchParams("visto")}
-            className={`px-1 py-2 rounded-xl text-sm lg:text-base transition-all ${
-              searchParams.get("searchindex") === "visto"
-                ? "bg-slate-100 font-bold"
-                : "bg-slate-300 cursor-pointer hover:font-bold hover:bg-slate-200"
-            }`}
-          >
-            Más visto
-          </li> */}
           <li
             onClick={handleSearchParams("recomendado")}
             className={`px-1 py-2 rounded-xl text-sm lg:text-base transition-all ${
