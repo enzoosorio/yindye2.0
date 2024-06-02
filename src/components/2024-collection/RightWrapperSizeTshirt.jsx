@@ -47,8 +47,8 @@ export default function RightWrapperSizeTshirt() {
             className={`col-span-1 row-span-1 px-3 py-1 text-center border border-black transition-all ${
               sizeTshirt.isAvailable
                 ? params.get("size") === sizeTshirt.size
-                  ? "bg-slate-500"
-                  : "font-bold cursor-pointer hover:scale-105 active:bg-sky-800"
+                  ? "bg-slate-500 text-white"
+                  : "font-bold cursor-pointer hover:scale-105 active:bg-sky-900"
                 : "bg-slate-100 text-gray-700 cursor-default"
             } `}
             onClick={
