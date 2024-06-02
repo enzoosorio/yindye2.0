@@ -63,7 +63,7 @@ export default function RightWrapperSizeTshirt() {
         ))}
       </div>
       <Link
-        href={`https://wa.me/950306310?text=${encodeURIComponent(message)}`}
+        href={`https://wa.me/+51950306310?text=${encodeURIComponent(message)}`}
         className={`flex gap-3 bg-slate-500 w-max mx-auto rounded-xl px-5 py-[6px] hover:bg-slate-600 transition-colors text-white ${
           !params.get("size") ? "pointer-events-none opacity-50" : ""
         }`}
