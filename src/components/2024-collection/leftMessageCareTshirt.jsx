@@ -8,7 +8,7 @@ export default function LeftMessageCareTshirt() {
   const [isPressed, setIsPressed] = useState(false);
   return (
     <div
-      className={`hidden lg:flex flex-col gap-5 md:max-w-60 xl:max-w-72 h-full lg:h-2/3  overflow-hidden scrollbar-hide-buttons scrollbar-thin scrollbar-webkit  ${
+      className={`hidden md:flex flex-col gap-5 md:max-w-48 xl:max-w-72 min-h-[350px] h-full lg:h-3/4 lg:max-h-[calc(100%-140px)] overflow-hidden scrollbar-hide-buttons scrollbar-thin scrollbar-webkit  ${
         isPressed
           ? "clip-inset-full-care overflow-y-visible"
           : "clip-inset-small-care"
@@ -50,12 +50,7 @@ export default function LeftMessageCareTshirt() {
               key={care.id}
               className="flex gap-4 justify-start items-center"
             >
-              <Image
-                src={care.iconCare}
-                alt={`care ${care.id}`}
-                width={16}
-                height={16}
-              />
+              <Image src={care.iconCare} alt={`care ${care.id}`} />
               <p className="text-xs w-28 ">{care.label}</p>
             </div>
           ))}

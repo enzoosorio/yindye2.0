@@ -80,6 +80,7 @@ export default function CardWrapper() {
             <Image
               src={isBgActived ? card.bg : bgWhite}
               className="absolute top-0 w-full h-full rounded-xl"
+              alt={`icon Art ${card.id}`}
             />
             {showText ? (
               <p
@@ -97,6 +98,7 @@ export default function CardWrapper() {
                     : "w-[100px] lg:w-[110px]"
                 }  xl:w-[120px] z-50 `}
                 src={isBgActived ? card.svgWhite : card.icon}
+                alt={`alt icon ${card.id}`}
               />
             )}
           </div>

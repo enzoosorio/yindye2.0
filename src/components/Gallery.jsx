@@ -47,6 +47,7 @@ export default function Gallery() {
           className={`col-span-2 row-span-1 w-[530px] ${
             isImage1Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700`}
+          alt="image gallery 1"
         />
         <Image
           ref={image2Ref}
@@ -54,6 +55,7 @@ export default function Gallery() {
           className={`col-span-2 row-span-1 w-[630px] ${
             isImage2Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700 `}
+          alt="image gallery 2"
         />
         <Image
           ref={image3Ref}
@@ -61,6 +63,7 @@ export default function Gallery() {
           className={`col-span-4 row-span-1 ${
             isImage3Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700`}
+          alt="image gallery 3"
         />
         <Image
           ref={image4Ref}
@@ -68,6 +71,7 @@ export default function Gallery() {
           className={`col-span-2 row-span-1 ${
             isImage4Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700`}
+          alt="image gallery 4"
         />
         <Image
           ref={image6Ref}
@@ -75,6 +79,7 @@ export default function Gallery() {
           className={`col-span-2 row-span-2 ${
             isImage6Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700`}
+          alt="image gallery 6"
         />
         <Image
           ref={image5Ref}
@@ -82,6 +87,7 @@ export default function Gallery() {
           className={`col-span-2 row-span-1 ${
             isImage5Visible ? "opacity-100" : "opacity-0"
           } h-full rounded-xl transition-all duration-700`}
+          alt="image gallery 5"
         />
         <Image
           ref={image7Ref}
@@ -89,6 +95,7 @@ export default function Gallery() {
           className={`col-span-4 row-span-1 ${
             isImage7Visible ? "opacity-100" : "opacity-0"
           } rounded-xl transition-all duration-700`}
+          alt="image gallery 7"
         />
       </div>
     </>

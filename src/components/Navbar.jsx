@@ -20,11 +20,12 @@ export default function Navbar() {
           }}
           href={"/"}
         >
-          <Image src={Logo} width={140} />
+          <Image src={Logo} width={140} alt="logo YinDye" />
           <Image
             src={Logo_cat}
             width={70}
             className="absolute top-3 -left-2 -z-10"
+            alt="Cat part of logo YinDye"
           />
         </Link>
       </div>

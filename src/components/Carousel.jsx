@@ -50,7 +50,12 @@ export default function Carousel() {
     banners.forEach((banner) => {
       // Use priority="true" to preload the image
       // Use loading="eager" to force the image to load immediately
-      <Image src={banner.src} priority={true} loading="eager" />;
+      <Image
+        src={banner.src}
+        priority={true}
+        alt="banner Image Yindye"
+        loading="eager"
+      />;
     });
   }, []);
 

@@ -1,14 +1,14 @@
 "use client";
 import { infoTShirts } from "@/utils/2024_collection";
-import Image from "next/image";
 import {
   useParams,
   usePathname,
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import Whatsapp from "../../assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg";
 import Link from "next/link";
+import Whatsapp from "../../assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg";
+import Image from "next/image";
 
 export default function RightWrapperSizeTshirt() {
   const searchParams = useSearchParams();
@@ -54,7 +54,7 @@ export default function RightWrapperSizeTshirt() {
             onClick={
               sizeTshirt.isAvailable
                 ? handleSearchParamsSize(`${sizeTshirt.size}`)
-                : ""
+                : handleSearchParamsSize(undefined)
             }
             disabled={!sizeTshirt.isAvailable}
           >
