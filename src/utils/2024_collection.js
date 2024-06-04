@@ -24,6 +24,22 @@ import ZaraImageSmall5 from '../assets/imagenesTshirtCollection/tshirts/tshirt-1
 import ZaraImageSmall6 from '../assets/imagenesTshirtCollection/tshirts/tshirt-1/small/zaraImagen6.jpg'
 import ZaraImageSmall7 from '../assets/imagenesTshirtCollection/tshirts/tshirt-1/small/zaraImagen7.jpg'
 
+import ZaraImageNormal21 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-1.jpg'
+import ZaraImageNormal22 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-2.jpg'
+import ZaraImageNormal23 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-3.jpg'
+import ZaraImageNormal24 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-4.jpg'
+import ZaraImageNormal25 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-5.jpg'
+import ZaraImageNormal26 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-6.jpg'
+import ZaraImageNormal27 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/normal/zaraImagenGrande2-7.jpg'
+
+import ZaraImageSmall21 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-1.jpg'
+import ZaraImageSmall22 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-2.jpg'
+import ZaraImageSmall23 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-3.jpg'
+import ZaraImageSmall24 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-4.jpg'
+import ZaraImageSmall25 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-5.jpg'
+import ZaraImageSmall26 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-6.jpg'
+import ZaraImageSmall27 from '../assets/imagenesTshirtCollection/tshirts/tshirt-2/small/zaraImagen2-7.jpg'
+
 export const infoTShirts = [
     {
         id: 0,
@@ -46,6 +62,7 @@ export const infoTShirts = [
             { id: 'sI6', smallImageSrc: ZaraImageSmall6, altNormalImage: 'Miniature Tshirt 6' },
             { id: 'sI7', smallImageSrc: ZaraImageSmall7, altNormalImage: 'Miniature Tshirt 7' },
         ],
+        alt: 'main image',
         brand: "adidas",
         nameZapatilla: "Bad bunny campus",
         precio: "649.00",
@@ -59,17 +76,29 @@ export const infoTShirts = [
     },
     {
         id: 1,
-        image: Zapatilla2,
+        image: ZaraImageNormal21,
+        normalImages: [
+            { id: 'nI21', normalImageSrc: ZaraImageNormal21, altNormalImage: 'Tshirt 2-1' },
+            { id: 'nI22', normalImageSrc: ZaraImageNormal22, altNormalImage: 'Tshirt 2-2' },
+            { id: 'nI23', normalImageSrc: ZaraImageNormal23, altNormalImage: 'Tshirt 2-3' },
+            { id: 'nI24', normalImageSrc: ZaraImageNormal24, altNormalImage: 'Tshirt 2-4' },
+            { id: 'nI25', normalImageSrc: ZaraImageNormal25, altNormalImage: 'Tshirt 2-5' },
+            { id: 'nI26', normalImageSrc: ZaraImageNormal26, altNormalImage: 'Tshirt 2-6' },
+            { id: 'nI27', normalImageSrc: ZaraImageNormal27, altNormalImage: 'Tshirt 2-7' },
+        ],
+        smallImages: [
+            { id: 'sI21', smallImageSrc: ZaraImageSmall21, altNormalImage: 'Miniature Tshirt 2-1' },
+            { id: 'sI22', smallImageSrc: ZaraImageSmall22, altNormalImage: 'Miniature Tshirt 2-2' },
+            { id: 'sI23', smallImageSrc: ZaraImageSmall23, altNormalImage: 'MiniatureTshirt 2-3' },
+            { id: 'sI24', smallImageSrc: ZaraImageSmall24, altNormalImage: 'Miniature Tshirt 2-4' },
+            { id: 'sI25', smallImageSrc: ZaraImageSmall25, altNormalImage: 'Miniature Tshirt 2-5' },
+            { id: 'sI26', smallImageSrc: ZaraImageSmall26, altNormalImage: 'Miniature Tshirt 2-6' },
+            { id: 'sI27', smallImageSrc: ZaraImageSmall27, altNormalImage: 'Miniature Tshirt 2-7' },
+        ],
         alt: "Zapatilla2",
         brand: "adidas",
         nameZapatilla: "Campus 2.0 korn",
         precio: "449.00",
-        image2: Zapatilla2,
-        image3: Zapatilla2,
-        image4: Zapatilla2,
-        image5: Zapatilla2,
-        image6: Zapatilla2,
-        image7: Zapatilla2,
         descriptionTshirt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ad at harum aspernatur exercitationem recusandae dolore odit eaque quod officia? Recusandae facere deleniti labore quae.',
         sizes: [
             { size: 'S', isAvailable: true },
@@ -80,17 +109,29 @@ export const infoTShirts = [
     },
     {
         id: 2,
-        image: Zapatilla3,
+        image: ZaraImageNormal1,
+        normalImages: [
+            { id: 'nI1', normalImageSrc: ZaraImageNormal1, altNormalImage: 'Tshirt 1' },
+            { id: 'nI2', normalImageSrc: ZaraImageNormal2, altNormalImage: 'Tshirt 2' },
+            { id: 'nI3', normalImageSrc: ZaraImageNormal3, altNormalImage: 'Tshirt 3' },
+            { id: 'nI4', normalImageSrc: ZaraImageNormal4, altNormalImage: 'Tshirt 4' },
+            { id: 'nI5', normalImageSrc: ZaraImageNormal5, altNormalImage: 'Tshirt 5' },
+            { id: 'nI6', normalImageSrc: ZaraImageNormal6, altNormalImage: 'Tshirt 6' },
+            { id: 'nI7', normalImageSrc: ZaraImageNormal7, altNormalImage: 'Tshirt 7' },
+        ],
+        smallImages: [
+            { id: 'sI1', smallImageSrc: ZaraImageSmall1, altNormalImage: 'Miniature Tshirt 1' },
+            { id: 'sI2', smallImageSrc: ZaraImageSmall2, altNormalImage: 'Miniature Tshirt 2' },
+            { id: 'sI3', smallImageSrc: ZaraImageSmall3, altNormalImage: 'MiniatureTshirt 3' },
+            { id: 'sI4', smallImageSrc: ZaraImageSmall4, altNormalImage: 'Miniature Tshirt 4' },
+            { id: 'sI5', smallImageSrc: ZaraImageSmall5, altNormalImage: 'Miniature Tshirt 5' },
+            { id: 'sI6', smallImageSrc: ZaraImageSmall6, altNormalImage: 'Miniature Tshirt 6' },
+            { id: 'sI7', smallImageSrc: ZaraImageSmall7, altNormalImage: 'Miniature Tshirt 7' },
+        ],
         alt: "Zapatilla3",
         brand: "new balance",
         nameZapatilla: "NB 530 linen sea salt",
         precio: "419.00",
-        image2: Zapatilla3,
-        image3: Zapatilla3,
-        image4: Zapatilla3,
-        image5: Zapatilla3,
-        image6: Zapatilla3,
-        image7: Zapatilla3,
         descriptionTshirt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ad at harum aspernatur exercitationem recusandae dolore odit eaque quod officia? Recusandae facere deleniti labore quae.',
         sizes: [
             { size: 'S', isAvailable: false },
@@ -101,17 +142,29 @@ export const infoTShirts = [
     },
     {
         id: 3,
-        image: Zapatilla1,
+        image: ZaraImageNormal21,
+        normalImages: [
+            { id: 'nI21', normalImageSrc: ZaraImageNormal21, altNormalImage: 'Tshirt 2-1' },
+            { id: 'nI22', normalImageSrc: ZaraImageNormal22, altNormalImage: 'Tshirt 2-2' },
+            { id: 'nI23', normalImageSrc: ZaraImageNormal23, altNormalImage: 'Tshirt 2-3' },
+            { id: 'nI24', normalImageSrc: ZaraImageNormal24, altNormalImage: 'Tshirt 2-4' },
+            { id: 'nI25', normalImageSrc: ZaraImageNormal25, altNormalImage: 'Tshirt 2-5' },
+            { id: 'nI26', normalImageSrc: ZaraImageNormal26, altNormalImage: 'Tshirt 2-6' },
+            { id: 'nI27', normalImageSrc: ZaraImageNormal27, altNormalImage: 'Tshirt 2-7' },
+        ],
+        smallImages: [
+            { id: 'sI21', smallImageSrc: ZaraImageSmall21, altNormalImage: 'Miniature Tshirt 2-1' },
+            { id: 'sI22', smallImageSrc: ZaraImageSmall22, altNormalImage: 'Miniature Tshirt 2-2' },
+            { id: 'sI23', smallImageSrc: ZaraImageSmall23, altNormalImage: 'MiniatureTshirt 2-3' },
+            { id: 'sI24', smallImageSrc: ZaraImageSmall24, altNormalImage: 'Miniature Tshirt 2-4' },
+            { id: 'sI25', smallImageSrc: ZaraImageSmall25, altNormalImage: 'Miniature Tshirt 2-5' },
+            { id: 'sI26', smallImageSrc: ZaraImageSmall26, altNormalImage: 'Miniature Tshirt 2-6' },
+            { id: 'sI27', smallImageSrc: ZaraImageSmall27, altNormalImage: 'Miniature Tshirt 2-7' },
+        ],
         alt: "Zapatilla1",
         brand: "adidas",
         nameZapatilla: "Bad bunny campus",
         precio: "649.00",
-        image2: Zapatilla1,
-        image3: Zapatilla1,
-        image4: Zapatilla1,
-        image5: Zapatilla1,
-        image6: Zapatilla1,
-        image7: Zapatilla1,
         descriptionTshirt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ad at harum aspernatur exercitationem recusandae dolore odit eaque quod officia? Recusandae facere deleniti labore quae.',
         sizes: [
             { size: 'S', isAvailable: true },
@@ -122,17 +175,29 @@ export const infoTShirts = [
     },
     {
         id: 4,
-        image: Zapatilla2,
+        image: ZaraImageNormal1,
+        normalImages: [
+            { id: 'nI1', normalImageSrc: ZaraImageNormal1, altNormalImage: 'Tshirt 1' },
+            { id: 'nI2', normalImageSrc: ZaraImageNormal2, altNormalImage: 'Tshirt 2' },
+            { id: 'nI3', normalImageSrc: ZaraImageNormal3, altNormalImage: 'Tshirt 3' },
+            { id: 'nI4', normalImageSrc: ZaraImageNormal4, altNormalImage: 'Tshirt 4' },
+            { id: 'nI5', normalImageSrc: ZaraImageNormal5, altNormalImage: 'Tshirt 5' },
+            { id: 'nI6', normalImageSrc: ZaraImageNormal6, altNormalImage: 'Tshirt 6' },
+            { id: 'nI7', normalImageSrc: ZaraImageNormal7, altNormalImage: 'Tshirt 7' },
+        ],
+        smallImages: [
+            { id: 'sI1', smallImageSrc: ZaraImageSmall1, altNormalImage: 'Miniature Tshirt 1' },
+            { id: 'sI2', smallImageSrc: ZaraImageSmall2, altNormalImage: 'Miniature Tshirt 2' },
+            { id: 'sI3', smallImageSrc: ZaraImageSmall3, altNormalImage: 'MiniatureTshirt 3' },
+            { id: 'sI4', smallImageSrc: ZaraImageSmall4, altNormalImage: 'Miniature Tshirt 4' },
+            { id: 'sI5', smallImageSrc: ZaraImageSmall5, altNormalImage: 'Miniature Tshirt 5' },
+            { id: 'sI6', smallImageSrc: ZaraImageSmall6, altNormalImage: 'Miniature Tshirt 6' },
+            { id: 'sI7', smallImageSrc: ZaraImageSmall7, altNormalImage: 'Miniature Tshirt 7' },
+        ],
         alt: "Zapatilla2",
         brand: "adidas",
         nameZapatilla: "Campus 2.0 korn",
         precio: "449.00",
-        image2: Zapatilla2,
-        image3: Zapatilla2,
-        image4: Zapatilla2,
-        image5: Zapatilla2,
-        image6: Zapatilla2,
-        image7: Zapatilla2,
         descriptionTshirt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ad at harum aspernatur exercitationem recusandae dolore odit eaque quod officia? Recusandae facere deleniti labore quae.',
         sizes: [
             { size: 'S', isAvailable: false },
@@ -143,17 +208,29 @@ export const infoTShirts = [
     },
     {
         id: 5,
-        image: Zapatilla3,
+        image: ZaraImageNormal21,
+        normalImages: [
+            { id: 'nI21', normalImageSrc: ZaraImageNormal21, altNormalImage: 'Tshirt 2-1' },
+            { id: 'nI22', normalImageSrc: ZaraImageNormal22, altNormalImage: 'Tshirt 2-2' },
+            { id: 'nI23', normalImageSrc: ZaraImageNormal23, altNormalImage: 'Tshirt 2-3' },
+            { id: 'nI24', normalImageSrc: ZaraImageNormal24, altNormalImage: 'Tshirt 2-4' },
+            { id: 'nI25', normalImageSrc: ZaraImageNormal25, altNormalImage: 'Tshirt 2-5' },
+            { id: 'nI26', normalImageSrc: ZaraImageNormal26, altNormalImage: 'Tshirt 2-6' },
+            { id: 'nI27', normalImageSrc: ZaraImageNormal27, altNormalImage: 'Tshirt 2-7' },
+        ],
+        smallImages: [
+            { id: 'sI21', smallImageSrc: ZaraImageSmall21, altNormalImage: 'Miniature Tshirt 2-1' },
+            { id: 'sI22', smallImageSrc: ZaraImageSmall22, altNormalImage: 'Miniature Tshirt 2-2' },
+            { id: 'sI23', smallImageSrc: ZaraImageSmall23, altNormalImage: 'MiniatureTshirt 2-3' },
+            { id: 'sI24', smallImageSrc: ZaraImageSmall24, altNormalImage: 'Miniature Tshirt 2-4' },
+            { id: 'sI25', smallImageSrc: ZaraImageSmall25, altNormalImage: 'Miniature Tshirt 2-5' },
+            { id: 'sI26', smallImageSrc: ZaraImageSmall26, altNormalImage: 'Miniature Tshirt 2-6' },
+            { id: 'sI27', smallImageSrc: ZaraImageSmall27, altNormalImage: 'Miniature Tshirt 2-7' },
+        ],
         alt: "Zapatilla3",
         brand: "new balance",
         nameZapatilla: "NB 530 linen sea salt",
         precio: "419.00",
-        image2: Zapatilla3,
-        image3: Zapatilla3,
-        image4: Zapatilla3,
-        image5: Zapatilla3,
-        image6: Zapatilla3,
-        image7: Zapatilla3,
         descriptionTshirt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ad at harum aspernatur exercitationem recusandae dolore odit eaque quod officia? Recusandae facere deleniti labore quae.',
         sizes: [
             { size: 'S', isAvailable: false },

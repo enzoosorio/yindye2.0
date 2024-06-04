@@ -27,20 +27,13 @@ export default function LeftMessageCareTshirt() {
         >
           Ver más
         </p>
-        Para mantener limpias tus chaquetas y abrigos sólo tienes que
+        <br /> Para mantener limpias tus chaquetas y abrigos sólo tienes que
         ventilarlas y pasarles un paño o un cepillo para la ropa. Este proceso
         es más delicado con los tejidos y además evita el consumo de agua y
         energía de los procesos de lavado.
         <br />
         <p className={`cursor-pointer font-bold underline my-3 tracking-wide `}>
           Guía para el cuidado de la ropa.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis,
-          itaque. Autem soluta porro atque consequatur blanditiis mollitia modi
-          nostrum ex hic laudantium optio fugit unde quo excepturi praesentium
-          ducimus repellendus, odit voluptas ipsa quisquam, nemo nesciunt
-          laboriosam, tempora id. Modi.
         </p>
       </h3>
       <div className="flex flex-col gap-5 w-max ml-2 mb-5 ">
