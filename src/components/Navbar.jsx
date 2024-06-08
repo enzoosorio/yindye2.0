@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Logo from "../assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
-import Logo_cat from "../assets/imagenesyotrosrecursos/parte_del_logo/gato_with_shadow.jpg";
 import Link from "next/link";
 import clsx from "clsx";
+import Logo from "@/assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
+import Logo_cat from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato_with_shadow.jpg";
+import Logo_cat_transparent from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato_caminando_parte_del_logo.webp";
 import { hepta_slab_font } from "@/utils/fonts";
-
+import UserLogo from "@/assets/imagenesyotrosrecursos/parte_del_logo/PhUserBold.svg";
 export default function Navbar() {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -22,9 +23,9 @@ export default function Navbar() {
         >
           <Image src={Logo} width={140} alt="logo YinDye" />
           <Image
-            src={Logo_cat}
+            src={Logo_cat_transparent}
             width={70}
-            className="absolute top-3 -left-2 -z-10"
+            className="absolute top-2 -left-5 -z-10 drop-shadow-custom"
             alt="Cat part of logo YinDye"
           />
         </Link>
@@ -37,11 +38,15 @@ export default function Navbar() {
           <Link href={"/artgallery"}>ArtGallery</Link>
         </li>
         <li className="hover:scale-110 transition-transform">
-          <Link
-            className="bg-orange-400 p-3 rounded-xl text-white"
-            href={"/artblog"}
-          >
-            ArtBlog
+          <Link href={"/artblog"}>ArtBlog</Link>
+        </li>
+        <li className="hover:scale-110 transition-transform ">
+          <Link href={"/login"}>
+            <Image
+              src={UserLogo}
+              alt="user Logo"
+              className="w-full h-full bg-orange-400 rounded-xl text-white py-2 px-3"
+            />
           </Link>
         </li>
       </ul>
@@ -81,7 +86,7 @@ export default function Navbar() {
       </button>
       <ul
         className={clsx(
-          `md:hidden fixed top-0 w-full h-screen flex flex-col items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
+          `md:hidden fixed top-0 w-full h-screen flex flex-col pt-10 items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
           {
             "opacity-100 z-[100] left-0": isPressed,
             "opacity-0 -z-50 left-full": !isPressed,
@@ -107,6 +112,16 @@ export default function Navbar() {
             />
           </svg>
         </button>
+        <li className="text-xl font-bold hover:text-2xl transition-all">
+          <Link
+            onClick={() => {
+              setIsPressed(!isPressed);
+            }}
+            href={"/"}
+          >
+            Iniciar Sesión
+          </Link>
+        </li>
         <li className="text-xl font-bold hover:text-2xl transition-all">
           <Link
             onClick={() => {

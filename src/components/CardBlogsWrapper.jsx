@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { blogsArray } from "@/utils/blogs";
 import Image from "next/image";
+
 export default function CardBlogsWrapper({ searchindexparam }) {
   const blogs = [...blogsArray];
   const parseDate = (dateString) => {

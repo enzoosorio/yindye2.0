@@ -1,30 +1,30 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import playButtonBlack from "../assets/imagenesyotrosrecursos/iconssvgs/PlayIconColorBlack.svg";
-import playButtonGray from "../assets/imagenesyotrosrecursos/iconssvgs/PlayIconColorGray.svg";
-import stopButtonBlack from "../assets/imagenesyotrosrecursos/iconssvgs/StopIconColorBlack.svg";
-import stopButtonGray from "../assets/imagenesyotrosrecursos/iconssvgs/StopIconColorGray.svg";
+import playButtonBlack from "@/assets/imagenesyotrosrecursos/iconssvgs/PlayIconColorBlack.svg";
+import playButtonGray from "@/assets/imagenesyotrosrecursos/iconssvgs/PlayIconColorGray.svg";
+import stopButtonBlack from "@/assets/imagenesyotrosrecursos/iconssvgs/StopIconColorBlack.svg";
+import stopButtonGray from "@/assets/imagenesyotrosrecursos/iconssvgs/StopIconColorGray.svg";
 import Image from "next/image";
-import farrosofia1 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia1.webp";
-import farrosofia2 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia2.webp";
-import farrosofia3 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia3.webp";
-import farrosofia4 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia4.webp";
-import farrosofia5 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia5.webp";
-import farrosofia6 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia6.webp";
-import farrosofia7 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia7.webp";
-import farrosofia8 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia8.webp";
-import farrosofia9 from "../assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia9.webp";
+import farrosofia1 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia1.webp";
+import farrosofia2 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia2.webp";
+import farrosofia3 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia3.webp";
+import farrosofia4 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia4.webp";
+import farrosofia5 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia5.webp";
+import farrosofia6 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia6.webp";
+import farrosofia7 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia7.webp";
+import farrosofia8 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia8.webp";
+import farrosofia9 from "@/assets/imagenesyotrosrecursos/farro_sofia_modelos/farro_sofia9.webp";
 
-import marley1 from "../assets/imagenesyotrosrecursos/marly_modelo/marly1.webp";
-import marley2 from "../assets/imagenesyotrosrecursos/marly_modelo/marly2.webp";
-import marley3 from "../assets/imagenesyotrosrecursos/marly_modelo/marly3.webp";
-import marley4 from "../assets/imagenesyotrosrecursos/marly_modelo/marly4.webp";
-import marley5 from "../assets/imagenesyotrosrecursos/marly_modelo/marly5.webp";
-import marley6 from "../assets/imagenesyotrosrecursos/marly_modelo/marly6.webp";
-import marley7 from "../assets/imagenesyotrosrecursos/marly_modelo/marly7.webp";
-import marley8 from "../assets/imagenesyotrosrecursos/marly_modelo/marly8.webp";
-import marley9 from "../assets/imagenesyotrosrecursos/marly_modelo/marly9.webp";
+import marley1 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly1.webp";
+import marley2 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly2.webp";
+import marley3 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly3.webp";
+import marley4 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly4.webp";
+import marley5 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly5.webp";
+import marley6 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly6.webp";
+import marley7 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly7.webp";
+import marley8 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly8.webp";
+import marley9 from "@/assets/imagenesyotrosrecursos/marly_modelo/marly9.webp";
 
 export default function ImagesModels() {
   const [isReproducing, setIsReproducing] = useState(false);

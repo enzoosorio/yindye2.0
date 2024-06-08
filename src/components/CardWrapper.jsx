@@ -1,52 +1,16 @@
 "use client";
 
-import Monalisa from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/la-monalisa-as-icon.webp";
-import Cat from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/gato-as-icon.webp";
-import Microphone from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/musica-microfono-as-icon.webp";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIsVisible from "@/utils/useIsVisible";
-import { josefin_slab_font, jost_font } from "@/utils/fonts";
-import monalisaSVG from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/la-monalisa-as-icon.svg";
-import microfonoSVG from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/microfono-as-icon.svg";
-import bgMonalisa from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-monalisa-as-icon.jpg";
-import bgCat from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/background-park-cat-as-icon.jpg";
-import microphoneBg from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/fondo-niebla-dinamica-realista.jpg";
-import bgWhite from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/bgWhite.jpg";
-
+import bgWhite from "@/assets/imagenesyotrosrecursos/as-icon-parte-below-hero/bgWhite.jpg";
+import { infoCard } from "@/utils/cardIconsArtWrapper";
 export default function CardWrapper() {
   const [showText, setShowText] = useState(true);
   const [counter, setCounter] = useState(0);
   const [isBgActived, setIsBgActived] = useState(false);
   const wrapperRef = useRef();
   const isVisible = useIsVisible(wrapperRef);
-
-  const infoCard = [
-    {
-      id: 1,
-      text: "arte",
-      icon: Monalisa,
-      font: jost_font,
-      bg: bgMonalisa,
-      svgWhite: monalisaSVG,
-    },
-    {
-      id: 2,
-      text: "música",
-      icon: Microphone,
-      font: josefin_slab_font,
-      bg: microphoneBg,
-      svgWhite: microfonoSVG,
-    },
-    {
-      id: 3,
-      text: "vida.",
-      icon: Cat,
-      font: jost_font,
-      bg: bgCat,
-      svgWhite: Cat,
-    },
-  ];
 
   useEffect(() => {
     let timeout;

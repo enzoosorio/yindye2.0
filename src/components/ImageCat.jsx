@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import GatoPlaya from "../assets/imagenesyotrosrecursos/banners/gato_en_la_playa_landing_page.webp";
+import GatoPlaya from "@/assets/imagenesyotrosrecursos/banners/gato_en_la_playa_landing_page.webp";
 import Image from "next/image";
 
 export default function ImageCat() {

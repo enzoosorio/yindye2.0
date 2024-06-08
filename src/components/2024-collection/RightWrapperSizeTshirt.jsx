@@ -7,7 +7,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 import Link from "next/link";
-import Whatsapp from "../../assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg";
+import Whatsapp from "@/assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg";
 import Image from "next/image";
 
 export default function RightWrapperSizeTshirt() {

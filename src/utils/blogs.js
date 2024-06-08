@@ -1,6 +1,6 @@
-import imagenExample from "../assets/imagenesyotrosrecursos/banners/banner_gallery_3.webp";
-import portadaBlog1 from '../assets/imagenesyotrosrecursos/blogImages/portadas/foto-portada-blog-llama.webp'
-import fotoBlog1 from '../assets/imagenesyotrosrecursos/blogImages/aditionalImages/foto-blog-llama.webp';
+import imagenExample from "@/assets/imagenesyotrosrecursos/banners/banner_gallery_3.webp";
+import portadaBlog1 from '@/assets/imagenesyotrosrecursos/blogImages/portadas/foto-portada-blog-llama.webp'
+import fotoBlog1 from '@/assets/imagenesyotrosrecursos/blogImages/aditionalImages/foto-blog-llama.webp';
 
 export const blogsArray = [
     {
@@ -84,3 +84,11 @@ export const blogsArray = [
         rating: 6.2,
     },
 ];
+
+export const useBlogArray = (idPathname) => {
+    const blog = blogsArray.find(blog => blog.id === idPathname);
+    if (!blog) {
+        return null;
+    }
+    return blog;
+}

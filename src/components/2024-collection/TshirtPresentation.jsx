@@ -3,7 +3,7 @@
 import { infoTShirts } from "@/utils/2024_collection";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import "../../utils/custom-scrollbar.css";
+import "@/utils/custom-scrollbar.css";
 import { useEffect, useRef, useState } from "react";
 
 export default function TshirtPresentation() {
