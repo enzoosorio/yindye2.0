@@ -11,7 +11,8 @@ declare namespace NodeJS {
       EDGE_STORE_ACCESS_KEY : string;
       EDGE_STORE_SECRET_KEY : string;
       PHONE_NUMBER : string;
-      // otras variables de entorno...
+      NEXT_PUBLIC_APP_URL: string;
+
     }
   }
   
