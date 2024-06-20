@@ -1,7 +1,12 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
+import { EdgeStoreProvider } from "@/lib/edgeStore";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,18 +16,26 @@ export const metadata = {
 
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
+  const session = await auth()
+
   return (
     <html lang="en" className="overflow-x-hidden">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <Navbar />
-        {children}
-        <hr className="mt-10 xl:w-[1080px] mx-auto" />
-        <Footer />
-      </body>
+      <SessionProvider session={session}>
+        <head>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+        </head>
+        <body className={`${inter.className} overflow-x-hidden`}>
+          <Navbar session={session} />
+          <EdgeStoreProvider>
+            <ToastContainer />
+            {children}
+          </EdgeStoreProvider>
+          <hr className="mt-10 xl:w-[1080px] mx-auto" />
+          <Footer />
+        </body>
+      </SessionProvider>
     </html>
   );
 }

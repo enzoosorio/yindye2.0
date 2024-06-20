@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String?        @unique
+  emailVerified DateTime?      @map("email_verified")
+  image         String?
+  password      String?
+  role          Role           @default(USER)
+  accounts      Account[]
+  writtenPosts  Post[]         @relation("WrittenPosts")
+  favoritePosts FavoritePost[]
+  ratings       Rating[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Rating {
+  id     String @id @default(cuid())
+  userId String
+  postId String
+  value  Int    @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@map("ratings")
+}
+
+model Post {
+  id            String         @id @default(cuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  title         String
+  description   String
+  mainImage     String
+  altMainImage  String
+  finalImage    String?
+  altFinalImage String?
+  published     Boolean        @default(false)
+  author        User           @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: Cascade)
+  authorId      String         @map("author_id")
+  favorites     FavoritePost[]
+  categories    Category[]
+  ratings       Rating[]
+
+  @@map("posts")
+}
+
+model FavoritePost {
+  userId String
+  postId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String
+  posts Post[]
+
+  @@map("categories")
+}
+
+model VerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model Product {
+  id               String   @id @default(cuid())
+  nameProduct      String   @map("name_product")
+  smallNameProduct String   @map("small_name_product")
+  price            Float
+  description      String
+  sizeS            Int?     @default(0)
+  sizeM            Int?     @default(0)
+  sizeL            Int?     @default(0)
+  sizeXL           Int?     @default(0)
+  images           Image[]  @relation("ProductImages")
+  createdAt        DateTime @default(now())
+
+  @@map("products")
+}
+
+model Image {
+  id        String    @id @default(cuid())
+  url       String
+  altText   String?
+  type      ImageType
+  productId String    @map("product_id")
+  product   Product   @relation("ProductImages", fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("images")
+}
+
+enum ImageType {
+  SMALL
+  NORMAL
+}
+
+enum Role {
+  USER
+  ADMIN
+}

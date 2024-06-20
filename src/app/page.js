@@ -1,14 +1,14 @@
-import CardWrapper from "@/components/CardWrapper";
-import CardWrapperTShirt from "@/components/cardWrapperTShirts";
-import ImageCat from "@/components/ImageCat";
-import ImagesModels from "@/components/ImagesModels";
-import { jost_font } from "@/utils/fonts";
-import monalisa from '../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/la-monalisa-as-icon.svg'
-import microfono from '../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/microfono-as-icon.svg'
-import Carousel from "@/components/Carousel";
-import { Subtitle } from "@/utils/subtitle";
+import CardWrapper from "../components/CardWrapper";
+import CardWrapperTShirt from "../components/cardWrapperTShirts";
+import ImageCat from "../components/ImageCat";
+import ImagesModels from "../components/ImagesModels";
+import { jost_font } from "../utils/fonts";
+import Carousel from "../components/Carousel";
+import { Subtitle } from "../utils/subtitle";
 
 export default function Home() {
+
+
   return (
     <main className={`w-full md:w-3/4 mx-auto  mt-24 flex flex-col items-center justify-center ${jost_font.className}`}>
       <Carousel />

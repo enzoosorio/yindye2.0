@@ -1,6 +1,6 @@
-import CollectionTshirtsWrapper from "@/components/CollectionTshirtsWrapper";
-import TextEffect from "@/components/textEffect";
-import { inter_font } from "@/utils/fonts";
+import CollectionTshirtsWrapper from "../../components/CollectionTshirtsWrapper";
+import TextEffect from "../../components/textEffect";
+import { inter_font } from "../../utils/fonts";
 
 
 export default function Last_Collection() {
