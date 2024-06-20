@@ -1,6 +1,6 @@
 "use client";
 
-import { tshirtCares } from "@/utils/2024_collection";
+import { tshirtCares } from "../../utils/2024_collection";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -8,7 +8,7 @@ export default function LeftMessageCareTshirt() {
   const [isPressed, setIsPressed] = useState(false);
   return (
     <div
-      className={`hidden md:flex flex-col gap-5 md:max-w-48 xl:max-w-72 min-h-[350px] h-full lg:h-3/4 lg:max-h-[calc(100%-140px)] overflow-hidden scrollbar-hide-buttons scrollbar-thin scrollbar-webkit  ${
+      className={`hidden lg:flex flex-col gap-5 md:max-w-48 xl:max-w-72 min-h-[350px] h-full lg:h-3/4 lg:max-h-[calc(100%-140px)] overflow-hidden scrollbar-hide-buttons scrollbar-thin scrollbar-webkit  ${
         isPressed
           ? "clip-inset-full-care overflow-y-visible"
           : "clip-inset-small-care"
@@ -27,7 +27,7 @@ export default function LeftMessageCareTshirt() {
         >
           Ver más
         </p>
-        <br /> Para mantener limpias tus chaquetas y abrigos sólo tienes que
+        <br /> Para mantener limpias tus polos y poleras sólo tienes que
         ventilarlas y pasarles un paño o un cepillo para la ropa. Este proceso
         es más delicado con los tejidos y además evita el consumo de agua y
         energía de los procesos de lavado.
@@ -48,8 +48,6 @@ export default function LeftMessageCareTshirt() {
             </div>
           ))}
       </div>
-      {/* TODO : VER COMO REGRESO AL INICIO DE ESTE CONTAINER SI CLICKO AL VER MENOS, ya que se queda con el contenido de abajo. */}
-      {/* <p className={`cursor-pointer font-bold underline my-3 tracking-wide ${!isPressed ? 'hidden' : 'block'}`} onClick={() => { setIsPressed(!isPressed) }}>Ver menos</p> */}
     </div>
   );
 }

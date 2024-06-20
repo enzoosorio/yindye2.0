@@ -1,23 +1,16 @@
 "use client";
 
-import { infoTShirts } from "@/utils/2024_collection";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import "@/utils/custom-scrollbar.css";
+import "../../utils/custom-scrollbar.css";
 import { useEffect, useRef, useState } from "react";
 
-export default function TshirtPresentation() {
-  const pathname = usePathname();
-  const idTshirt = pathname.split("/")[3];
+export default function TshirtPresentation({
+  normalImagesTshirt,
+  subImagesTshirt,
+}) {
   const wrapperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [startY, setStartY] = useState(0);
-
-  const tshirt = infoTShirts.find((tshirt) => tshirt.id === Number(idTshirt));
-
-  const normalImagesTshirt = tshirt.normalImages;
-  console.log(normalImagesTshirt);
-  const subImagesTshirt = tshirt.smallImages;
   const liHeight = 419.33; // Altura de cada <li>
 
   useEffect(() => {
@@ -89,21 +82,21 @@ export default function TshirtPresentation() {
   };
 
   return (
-    <section className="flex md:items-center justify-center lg:justify-center h-full w-full mx-auto overflow-hidden gap-8 custom-scrollbar">
+    <section className="flex md:items-start justify-center lg:justify-center h-max  w-full mx-auto overflow-hidden gap-8 custom-scrollbar">
       <ul
         ref={wrapperRef}
-        className="flex flex-col w-[279.33px] lg:mx-auto h-[419.33px] custom-scrollbar aspect-auto"
+        className="flex flex-col w-[279.33px] lg:mx-auto h-[419.33px] aspect-auto"
       >
-        {normalImagesTshirt.map((imageTshirt, index) => (
+        {normalImagesTshirt.map((normalImage, index) => (
           <li
-            key={imageTshirt.id}
+            key={index}
             className={`absolute w-[279.33px] object-contain h-[419.33px] transition-opacity duration-500 ease-in-out scale-[1.15] md:scale-100 ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
             style={{ top: `${index * liHeight}px` }}
           >
             <Image
-              src={imageTshirt.normalImageSrc}
+              src={normalImage.url}
               alt={`Tshirt Image ${index + 1}`}
               width={279.33}
               height={419.33}
@@ -114,16 +107,16 @@ export default function TshirtPresentation() {
       </ul>
 
       <div className="hidden lg:flex flex-col items-center justify-self-center gap-2 w-7">
-        {subImagesTshirt.map((subImage, index) => (
+        {subImagesTshirt.map((smallImage, index) => (
           <div
-            key={subImage.id}
+            key={index}
             className={`w-full cursor-pointer ${
               index === currentIndex ? "opacity-100" : "opacity-50"
             }`}
             onClick={() => handleThumbnailClick(index)}
           >
             <Image
-              src={subImage.smallImageSrc}
+              src={smallImage.url}
               alt={`Thumbnail ${index + 1}`}
               width={100}
               height={50}

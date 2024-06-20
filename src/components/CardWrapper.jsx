@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import useIsVisible from "@/utils/useIsVisible";
-import bgWhite from "@/assets/imagenesyotrosrecursos/as-icon-parte-below-hero/bgWhite.jpg";
-import { infoCard } from "@/utils/cardIconsArtWrapper";
+import useIsVisible from "../utils/useIsVisible";
+import bgWhite from "../assets/imagenesyotrosrecursos/as-icon-parte-below-hero/bgWhite.jpg";
+import { infoCard } from "../utils/cardIconsArtWrapper";
 export default function CardWrapper() {
   const [showText, setShowText] = useState(true);
   const [counter, setCounter] = useState(0);

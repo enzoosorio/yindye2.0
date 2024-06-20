@@ -1,24 +1,13 @@
 "use client";
-import { infoTShirts } from "@/utils/2024_collection";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import Whatsapp from "@/assets/imagenesyotrosrecursos/iconssvgs/MdiWhatsappWhite.svg";
 import Image from "next/image";
 
-export default function RightWrapperSizeTshirt() {
+export default function RightWrapperSizeTshirt({ polo, sizes }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
-  const idTshirt = pathname.split("/")[3];
-
-  const tshirt = infoTShirts.find((tshirt) => tshirt.id === Number(idTshirt));
-
-  const sizes = tshirt.sizes;
   const params = new URLSearchParams(searchParams);
 
   const handleSearchParamsSize = (size) => () => {
@@ -31,34 +20,34 @@ export default function RightWrapperSizeTshirt() {
   };
 
   const message = `Hola! quisiera adquirir el polo ${
-    tshirt.nameZapatilla
+    polo.nameProduct + " | " + polo.smallNameProduct
   } en la talla ${params.get("size")}`;
 
   return (
     <div className="w-full md:max-w-60 xl:max-w-72 flex flex-col gap-3 h-auto  py-7 px-16 md:px-6 md:border-4 text-xs ">
-      <h3>{tshirt.nameZapatilla.toUpperCase()}</h3>
-      <h4>{tshirt.brand.toUpperCase()}</h4>
-      <h4>S/{tshirt.precio}</h4>
-      <p>{tshirt.descriptionTshirt}</p>
+      <h3>{polo.nameProduct.toUpperCase()}</h3>
+      <h4>{polo.smallNameProduct.toUpperCase()}</h4>
+      <h4>S/{polo.price}</h4>
+      <p>{polo.description}</p>
       <div className="grid grid-cols-2 grid-rows-2  p-4 w-full gap-2 my-3">
-        {sizes.map((sizeTshirt, index) => (
+        {sizes.map((size, index) => (
           <button
             key={index}
             className={`col-span-1 row-span-1 px-3 py-1 text-center border border-black transition-all ${
-              sizeTshirt.isAvailable
-                ? params.get("size") === sizeTshirt.size
+              size.quantityOfSize > 0
+                ? params.get("size") === size.sizeName
                   ? "bg-slate-500 text-white"
                   : "font-bold cursor-pointer hover:scale-105 active:bg-sky-900"
                 : "bg-slate-100 text-gray-700 cursor-default"
             } `}
             onClick={
-              sizeTshirt.isAvailable
-                ? handleSearchParamsSize(`${sizeTshirt.size}`)
+              size.quantityOfSize > 0
+                ? handleSearchParamsSize(`${size.sizeName}`)
                 : handleSearchParamsSize(undefined)
             }
-            disabled={!sizeTshirt.isAvailable}
+            disabled={!size.quantityOfSize}
           >
-            {sizeTshirt.size}
+            {size.sizeName}
           </button>
         ))}
       </div>

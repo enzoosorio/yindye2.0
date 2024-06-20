@@ -1,14 +1,14 @@
 "use client";
 
-import Gallery1 from "@/assets/imagenesyotrosrecursos/banners/marley_foto_playa_2_gallery.webp";
-import Gallery2 from "@/assets/imagenesyotrosrecursos/banners/eleva_tu_estilo_gallery.webp";
-import Gallery3 from "@/assets/imagenesyotrosrecursos/banners/banner_shany_bg_violet.webp";
-import Gallery4 from "@/assets/imagenesyotrosrecursos/banners/tu_moda_tu_estilo_diego_gallery.webp";
-import Gallery5 from "@/assets/imagenesyotrosrecursos/banners/banner_gallery_3.webp";
-import Gallery6 from "@/assets/imagenesyotrosrecursos/banners/marley_foto_playa_1_gallery.webp";
-import Gallery7 from "@/assets/imagenesyotrosrecursos/banners/banner_imagen_farro_bg_brown_comprimido.webp";
+import Gallery1 from "../assets/imagenesyotrosrecursos/banners/marley_foto_playa_2_gallery.webp";
+import Gallery2 from "../assets/imagenesyotrosrecursos/banners/eleva_tu_estilo_gallery.webp";
+import Gallery3 from "../assets/imagenesyotrosrecursos/banners/banner_shany_bg_violet.webp";
+import Gallery4 from "../assets/imagenesyotrosrecursos/banners/tu_moda_tu_estilo_diego_gallery.webp";
+import Gallery5 from "../assets/imagenesyotrosrecursos/banners/banner_gallery_3.webp";
+import Gallery6 from "../assets/imagenesyotrosrecursos/banners/marley_foto_playa_1_gallery.webp";
+import Gallery7 from "../assets/imagenesyotrosrecursos/banners/banner_imagen_farro_bg_brown_comprimido.webp";
 import Image from "next/image";
-import useIsVisible from "@/utils/useIsVisible";
+import useIsVisible from "../utils/useIsVisible";
 import { useRef } from "react";
 
 export default function Gallery() {

@@ -1,6 +1,6 @@
 "use client";
 
-import useIsVisible from "@/utils/useIsVisible";
+import useIsVisible from "../utils/useIsVisible";
 import { useRef } from "react";
 
 export default function TextEffect({ children }) {

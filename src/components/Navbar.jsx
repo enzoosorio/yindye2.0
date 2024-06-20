@@ -1,19 +1,40 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
-import Logo from "@/assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
-import Logo_cat from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato_with_shadow.jpg";
-import Logo_cat_transparent from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato_caminando_parte_del_logo.webp";
-import { hepta_slab_font } from "@/utils/fonts";
-import UserLogo from "@/assets/imagenesyotrosrecursos/parte_del_logo/PhUserBold.svg";
-export default function Navbar() {
+import Logo from "../assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
+import Logo_cat_transparent from "../assets/imagenesyotrosrecursos/parte_del_logo/gato_caminando_parte_del_logo.webp";
+import { hepta_slab_font } from "../utils/fonts";
+import { IoLogoOctocat } from "react-icons/io5";
+import { FaUser } from "react-icons/fa6";
+import { useStorePannel } from "@/store/useUserPressedNavbar";
+import { signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { useCurrentRole } from "@/hooks/currentRole";
+
+export default function Navbar({ session }) {
+  const pathname = usePathname();
   const [isPressed, setIsPressed] = useState(false);
 
+  const roleUser = useCurrentRole();
+  const notSession = !session?.user;
+
+  const { userIsPressed, toggleUserIsPressed, setUserIsPressed } =
+    useStorePannel();
+
+  useEffect(() => {
+    if (userIsPressed) {
+      setUserIsPressed(false);
+    }
+  }, [pathname]);
+
   return (
-    <nav className="relative flex items-center justify-between px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto">
+    <nav
+      className={`relative flex items-center justify-between px-1 md:px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto ${
+        userIsPressed ? "mb-56" : ""
+      }`}
+    >
       <div className="relative">
         <Link
           onClick={() => {
@@ -25,7 +46,7 @@ export default function Navbar() {
           <Image
             src={Logo_cat_transparent}
             width={70}
-            className="absolute top-2 -left-5 -z-10 drop-shadow-custom"
+            className="absolute top-2 -left-1 md:-left-5 -z-10 drop-shadow-custom"
             alt="Cat part of logo YinDye"
           />
         </Link>
@@ -40,18 +61,111 @@ export default function Navbar() {
         <li className="hover:scale-110 transition-transform">
           <Link href={"/artblog"}>ArtBlog</Link>
         </li>
-        <li className="hover:scale-110 transition-transform ">
-          <Link href={"/login"}>
-            <Image
-              src={UserLogo}
-              alt="user Logo"
-              className="w-full h-full bg-orange-400 rounded-xl text-white py-2 px-3"
-            />
-          </Link>
-        </li>
+        {notSession ? (
+          <li className="hover:scale-110 transition-transform cursor-pointer ">
+            <Link href={"/login"}>
+              <FaUser className="text-3xl fill-orange-400 ml-2" />
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li
+              onClick={toggleUserIsPressed}
+              className="relative hover:scale-110 transition-transform cursor-pointer "
+            >
+              <IoLogoOctocat className="text-4xl fill-orange-400 " />
+            </li>
+            {/* TODO : hacer que cuando se cambie el pathname, se cierre automaticamente esto */}
+
+            <ul
+              className={`absolute w-[37ch] hidden md:flex top-14 right-0 bg-orange-400 md:mr-7 xl:mr-0 text-white font-semibold flex-col 
+              items-center justify-center gap-3 p-3 rounded-xl transition-all duration-300 ${
+                userIsPressed
+                  ? "opacity-100 h-max"
+                  : "opacity-0 pointer-events-none h-0"
+              } `}
+            >
+              <li className="text-pretty text-center">
+                Hola {session?.user?.name}!
+              </li>
+              <li>
+                <Link href={"/artblog"}>Blogs</Link>
+              </li>
+              <li>
+                <Link href={"/dashboard/settings"}>Configuración</Link>
+              </li>
+              {roleUser === "ADMIN" && (
+                <li className="hover:scale-110 transition-transform">
+                  <Link href={"/dashboard/admin"}>Administracion</Link>
+                </li>
+              )}
+              <li
+                className="cursor-pointer"
+                onClick={() => {
+                  signOut({
+                    callbackUrl: "/login",
+                  });
+                }}
+              >
+                Cerrar sesión
+              </li>
+            </ul>
+          </>
+        )}
+      </ul>
+      <ul className={`md:hidden absolute -top-0 left-1/2 transition-opacity `}>
+        {notSession ? (
+          <li className="hover:scale-110 transition-transform ">
+            <Link href={"/login"}>
+              <FaUser className="text-3xl fill-orange-400  " />
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li
+              onClick={toggleUserIsPressed}
+              className="relative hover:scale-110 transition-transform cursor-pointer "
+            >
+              <IoLogoOctocat className={`text-4xl fill-orange-400`} />
+            </li>
+            <ul
+              className={`absolute w-[20ch] md:hidden top-14 left-1/2 -translate-x-1/2 text-white bg-orange-400 font-semibold flex flex-col 
+                items-center justify-center gap-3 p-3 rounded-xl transition-all duration-300 ${
+                  userIsPressed
+                    ? "opacity-100 h-max"
+                    : "opacity-0 pointer-events-none h-0"
+                } `}
+            >
+              <li className="text-pretty text-center">
+                Hola {session?.user?.name}!
+              </li>
+              <li>
+                <Link href={"/artblog"}>Blogs</Link>
+              </li>
+              <li>
+                <Link href={"/dashboard/settings"}>Configuración</Link>
+              </li>
+              {roleUser === "ADMIN" && (
+                <li className="hover:scale-110 transition-transform">
+                  <Link href={"/dashboard/admin"}>Administracion</Link>
+                </li>
+              )}
+              <li
+                className="cursor-pointer"
+                onClick={() => {
+                  signOut({
+                    callbackUrl: "/login",
+                  });
+                }}
+              >
+                Cerrar sesión
+              </li>
+            </ul>
+          </>
+        )}
       </ul>
       <button
-        className="md:hidden bg-orange-400 rounded-md hover:scale-110 transition-transform"
+        className={`md:hidden bg-orange-400 rounded-md hover:scale-110 transition-transform`}
         onClick={() => {
           setIsPressed(!isPressed);
         }}
@@ -84,9 +198,11 @@ export default function Navbar() {
           </svg>
         )}
       </button>
+
       <ul
         className={clsx(
-          `md:hidden fixed top-0 w-full h-screen flex flex-col pt-10 items-center justify-center gap-12 text-white bg-orange-400 opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
+          `md:hidden fixed top-0 w-full h-screen flex flex-col pt-10 items-center justify-center gap-12 bg-orange-400 text-white 
+         opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
           {
             "opacity-100 z-[100] left-0": isPressed,
             "opacity-0 -z-50 left-full": !isPressed,
@@ -112,16 +228,6 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <li className="text-xl font-bold hover:text-2xl transition-all">
-          <Link
-            onClick={() => {
-              setIsPressed(!isPressed);
-            }}
-            href={"/"}
-          >
-            Iniciar Sesión
-          </Link>
-        </li>
         <li className="text-xl font-bold hover:text-2xl transition-all">
           <Link
             onClick={() => {

@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import rightArrow from "@/assets/imagenesyotrosrecursos/iconssvgs/right-arrow-svg.svg";
+import rightArrow from "../assets/imagenesyotrosrecursos/iconssvgs/right-arrow-svg.svg";
 import { useEffect, useRef, useState } from "react";
 
-import Banner1 from "@/assets/imagenesyotrosrecursos/banners/banner_landscape.webp";
-import Banner2 from "@/assets/imagenesyotrosrecursos/banners/banner_imagen_farro_bg_brown_comprimido.webp";
-import Banner3 from "@/assets/imagenesyotrosrecursos/banners/banner_shany_bg_violet.webp";
-import Banner4 from "@/assets/imagenesyotrosrecursos/banners/eleva_tu_estilo_gallery.webp";
+import Banner1 from "../assets/imagenesyotrosrecursos/banners/banner_landscape.webp";
+import Banner2 from "../assets/imagenesyotrosrecursos/banners/banner_imagen_farro_bg_brown_comprimido.webp";
+import Banner3 from "../assets/imagenesyotrosrecursos/banners/banner_shany_bg_violet.webp";
+import Banner4 from "../assets/imagenesyotrosrecursos/banners/eleva_tu_estilo_gallery.webp";
 
 export default function Carousel() {
   const [isHovered, setIsHovered] = useState(false);
