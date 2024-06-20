@@ -30,6 +30,8 @@ module.exports = {
   variants: {
     extend: {
       clipPath: ['responsive', 'hover', 'focus'],
+      translate: ['group-hover'],
+
     },
   },
   plugins: [
@@ -46,6 +48,12 @@ module.exports = {
         },
         '.clip-inset-full-care': {
           'clip-path': 'inset(0 0 0 0)',
+        },
+        '.clip-inset-mid-left': {
+          'clip-path': 'inset(0 50% 0 0)',
+        },
+        '.clip-inset-mid-right': {
+          'clip-path': 'inset(0 0 0 50%)'
         },
         '.drop-shadow-custom': {
           filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.4))',
