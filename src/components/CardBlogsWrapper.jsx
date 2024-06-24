@@ -64,21 +64,25 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
         blogsWithAuthorName.map((blog) => (
           <div
             key={blog.id}
-            className="w-auto md:w-[48%] border-2 shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
+            className="w-auto md:w-[48%] rounded-lg shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
           >
             <Link href={`/artblog/${blog.id}`} className="w-full">
               <Image
                 src={blog.mainImage}
                 alt={blog.altMainImage}
-                className="w-full object-cover"
+                className="w-full object-cover rounded-lg"
                 width={250}
                 height={200}
               />
               <div className="flex flex-col p-2 gap-2">
-                <h5 className="text-lg lg:text-xl font-bold">{blog.title}</h5>
-                <h6 className="text-sm  text-gray-500">{blog.authorName}</h6>
+                <h5 className="text-lg lg:text-xl font-bold text-text-primary">
+                  {blog.title}
+                </h5>
+                <h6 className="text-sm  text-text-secondary ">
+                  {blog.authorName}
+                </h6>
                 <div className="flex justify-between pr-4">
-                  <small className="text-gray-400">
+                  <small className="text-text-secondary">
                     {new Date(blog.createdAt).toLocaleDateString()}
                   </small>
                   <svg
@@ -89,7 +93,7 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
                   >
                     <path
                       fill="none"
-                      stroke="#333333"
+                      stroke="#B8B0B3"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"

@@ -5,6 +5,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import Logo from "../assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
 import Logo_cat_transparent from "../assets/imagenesyotrosrecursos/parte_del_logo/gato_caminando_parte_del_logo.webp";
+import Black_Logo_cat from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato-negro-dibujo-removebg-preview.png";
 import { hepta_slab_font } from "../utils/fonts";
 import { IoLogoOctocat } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
@@ -12,10 +13,13 @@ import { useStorePannel } from "@/store/useUserPressedNavbar";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useCurrentRole } from "@/hooks/currentRole";
+import ThemeSwitch from "@/components/buttonContact/buttonToggleTheme";
+import { useTheme } from "next-themes";
 
 export default function Navbar({ session }) {
   const pathname = usePathname();
   const [isPressed, setIsPressed] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
 
   const roleUser = useCurrentRole();
   const notSession = !session?.user;
@@ -31,7 +35,7 @@ export default function Navbar({ session }) {
 
   return (
     <nav
-      className={`relative flex items-center justify-between px-1 md:px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto ${
+      className={`relative flex items-center bg-transparent justify-between px-1 md:px-6 xl:px-0 mt-10 xl:w-[1080px] mx-auto ${
         userIsPressed ? "mb-56" : ""
       }`}
     >
@@ -46,25 +50,65 @@ export default function Navbar({ session }) {
           <Image
             src={Logo_cat_transparent}
             width={70}
-            className="absolute top-2 -left-1 md:-left-5 -z-10 drop-shadow-custom"
+            className={`${
+              resolvedTheme === "dark" ? "hidden" : "block"
+            } absolute top-2 -left-1 md:-left-5 -z-10 drop-shadow-custom`}
+            alt="Cat part of logo YinDye"
+          />
+          <Image
+            src={Black_Logo_cat}
+            width={70}
+            className={`${
+              resolvedTheme === "dark" ? "block" : "hidden"
+            } absolute -top-10 -left-1 md:-left-4 -z-10 drop-shadow-custom`}
             alt="Cat part of logo YinDye"
           />
         </Link>
       </div>
-      <ul className="hidden md:flex items-center justify-center gap-9 pr-2">
-        <li className="hover:scale-110 transition-transform">
+      <button
+        className="block md:hidden absolute cursor-pointer hover:scale-110 w-max"
+        style={{ left: "calc(50% + 60px)" }}
+      >
+        <ThemeSwitch />
+      </button>
+      <button
+        className="hidden md:block xl:hidden absolute cursor-pointer hover:scale-110 w-max"
+        style={{ left: "calc(40% - 35px)" }}
+      >
+        <ThemeSwitch />
+      </button>
+      <button
+        className="hidden xl:block absolute cursor-pointer hover:scale-110 w-max"
+        style={{ left: "calc(60% - 35px)" }}
+      >
+        <ThemeSwitch />
+      </button>
+      <ul className="hidden md:flex items-center justify-center text-text-primary gap-9 pr-2">
+        <li
+          className={`hover:scale-110 transition-transform ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link href={"/2024_collection"}>2024 collection</Link>
         </li>
-        <li className="hover:scale-110 transition-transform">
+        <li
+          className={`hover:scale-110 transition-transform ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link href={"/artgallery"}>ArtGallery</Link>
         </li>
-        <li className="hover:scale-110 transition-transform">
+        <li
+          className={`hover:scale-110 transition-transform ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link href={"/artblog"}>ArtBlog</Link>
         </li>
         {notSession ? (
           <li className="hover:scale-110 transition-transform cursor-pointer ">
             <Link href={"/login"}>
-              <FaUser className="text-3xl fill-orange-400 ml-2" />
+              <FaUser className="text-3xl fill-third-color-orange ml-2" />
             </Link>
           </li>
         ) : (
@@ -73,34 +117,52 @@ export default function Navbar({ session }) {
               onClick={toggleUserIsPressed}
               className="relative hover:scale-110 transition-transform cursor-pointer "
             >
-              <IoLogoOctocat className="text-4xl fill-orange-400 " />
+              <IoLogoOctocat className="text-4xl fill-third-color-orange" />
             </li>
             {/* TODO : hacer que cuando se cambie el pathname, se cierre automaticamente esto */}
 
             <ul
-              className={`absolute w-[37ch] hidden md:flex top-14 right-0 bg-orange-400 md:mr-7 xl:mr-0 text-white font-semibold flex-col 
+              className={`absolute w-[37ch] hidden md:flex top-14 right-0 bg-third-color-orange md:mr-7 xl:mr-0 text-text-menu-mobile drop-shadow-xl font-semibold flex-col 
               items-center justify-center gap-3 p-3 rounded-xl transition-all duration-300 ${
                 userIsPressed
                   ? "opacity-100 h-max"
                   : "opacity-0 pointer-events-none h-0"
               } `}
             >
-              <li className="text-pretty text-center">
-                Hola {session?.user?.name}!
+              <li
+                className={`text-pretty  text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
+                Hola {session?.user?.name}!!!
               </li>
-              <li>
+              <li
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
                 <Link href={"/artblog"}>Blogs</Link>
               </li>
-              <li>
+              <li
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
                 <Link href={"/dashboard/settings"}>Configuración</Link>
               </li>
               {roleUser === "ADMIN" && (
-                <li className="hover:scale-110 transition-transform">
+                <li
+                  className={`text-pretty cursor-pointer text-center ${
+                    resolvedTheme === "dark" ? "neon-effect" : ""
+                  }`}
+                >
                   <Link href={"/dashboard/admin"}>Administracion</Link>
                 </li>
               )}
               <li
-                className="cursor-pointer"
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
                 onClick={() => {
                   signOut({
                     callbackUrl: "/login",
@@ -113,11 +175,11 @@ export default function Navbar({ session }) {
           </>
         )}
       </ul>
-      <ul className={`md:hidden absolute -top-0 left-1/2 transition-opacity `}>
+      <ul className={`md:hidden absolute -top-0 left-1/2 transition-opacity`}>
         {notSession ? (
           <li className="hover:scale-110 transition-transform ">
             <Link href={"/login"}>
-              <FaUser className="text-3xl fill-orange-400  " />
+              <FaUser className="text-3xl fill-third-color-orange" />
             </Link>
           </li>
         ) : (
@@ -126,32 +188,50 @@ export default function Navbar({ session }) {
               onClick={toggleUserIsPressed}
               className="relative hover:scale-110 transition-transform cursor-pointer "
             >
-              <IoLogoOctocat className={`text-4xl fill-orange-400`} />
+              <IoLogoOctocat className={`text-4xl fill-third-color-orange`} />
             </li>
             <ul
-              className={`absolute w-[20ch] md:hidden top-14 left-1/2 -translate-x-1/2 text-white bg-orange-400 font-semibold flex flex-col 
+              className={`absolute w-[20ch] md:hidden top-14 left-1/2 -translate-x-1/2 text-text-menu-mobile bg-third-color-orange font-semibold flex flex-col 
                 items-center justify-center gap-3 p-3 rounded-xl transition-all duration-300 ${
                   userIsPressed
                     ? "opacity-100 h-max"
                     : "opacity-0 pointer-events-none h-0"
                 } `}
             >
-              <li className="text-pretty text-center">
+              <li
+                className={`text-pretty  text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
                 Hola {session?.user?.name}!
               </li>
-              <li>
+              <li
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
                 <Link href={"/artblog"}>Blogs</Link>
               </li>
-              <li>
+              <li
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
+              >
                 <Link href={"/dashboard/settings"}>Configuración</Link>
               </li>
               {roleUser === "ADMIN" && (
-                <li className="hover:scale-110 transition-transform">
+                <li
+                  className={`text-pretty cursor-pointer text-center ${
+                    resolvedTheme === "dark" ? "neon-effect" : ""
+                  }`}
+                >
                   <Link href={"/dashboard/admin"}>Administracion</Link>
                 </li>
               )}
               <li
-                className="cursor-pointer"
+                className={`text-pretty cursor-pointer text-center ${
+                  resolvedTheme === "dark" ? "neon-effect" : ""
+                }`}
                 onClick={() => {
                   signOut({
                     callbackUrl: "/login",
@@ -165,7 +245,7 @@ export default function Navbar({ session }) {
         )}
       </ul>
       <button
-        className={`md:hidden bg-orange-400 rounded-md hover:scale-110 transition-transform`}
+        className={`md:hidden bg-third-color-orange rounded-md hover:scale-110 transition-transform`}
         onClick={() => {
           setIsPressed(!isPressed);
         }}
@@ -201,7 +281,7 @@ export default function Navbar({ session }) {
 
       <ul
         className={clsx(
-          `md:hidden fixed top-0 w-full h-screen flex flex-col pt-10 items-center justify-center gap-12 bg-orange-400 text-white 
+          `md:hidden fixed top-0 w-full h-screen flex flex-col pt-10 items-center justify-center gap-12 bg-third-color-orange text-text-menu-mobile
          opacity-0 -z-50 transition-all ${hepta_slab_font.className}`,
           {
             "opacity-100 z-[100] left-0": isPressed,
@@ -228,7 +308,11 @@ export default function Navbar({ session }) {
             />
           </svg>
         </button>
-        <li className="text-xl font-bold hover:text-2xl transition-all">
+        <li
+          className={`text-xl font-bold hover:text-2xl transition-all ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link
             onClick={() => {
               setIsPressed(!isPressed);
@@ -239,7 +323,11 @@ export default function Navbar({ session }) {
           </Link>
         </li>
 
-        <li className="text-xl font-bold hover:text-2xl transition-all">
+        <li
+          className={`text-xl font-bold hover:text-2xl transition-all ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link
             onClick={() => {
               setIsPressed(!isPressed);
@@ -249,7 +337,11 @@ export default function Navbar({ session }) {
             2024 collection
           </Link>
         </li>
-        <li className="text-xl font-bold hover:scale-110 transition-all">
+        <li
+          className={`text-xl font-bold hover:text-2xl transition-all ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link
             onClick={() => {
               setIsPressed(!isPressed);
@@ -259,7 +351,11 @@ export default function Navbar({ session }) {
             ArtGallery
           </Link>
         </li>
-        <li className="text-xl font-bold hover:scale-110 transition-all">
+        <li
+          className={`text-xl font-bold hover:text-2xl transition-all ${
+            resolvedTheme === "dark" ? "neon-effect" : ""
+          } `}
+        >
           <Link
             onClick={() => {
               setIsPressed(!isPressed);

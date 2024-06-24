@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className={`w-full md:w-3/4 mx-auto  mt-24 flex flex-col items-center justify-center ${jost_font.className}`}>
       <Carousel />
-      <h2 className={`mt-[68px] w-full 2xl:w-[1080px] text-center md:text-left text-2xl lg:text-3xl `}>
+      <h2 className={`mt-[68px] w-full 2xl:w-[1080px] text-text-primary text-center md:text-left text-2xl lg:text-3xl `}>
         Un estilo fuera de la <span className="text-lime-400/80">rutina.</span>
       </h2>
       <CardWrapper />

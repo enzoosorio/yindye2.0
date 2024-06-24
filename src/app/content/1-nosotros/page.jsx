@@ -12,10 +12,10 @@ export default function Nosotros() {
 
   return (
     <section
-      className={`w-11/12 md:w-[70ch] lg:w-[80ch] 2xl:w-[1080px] mx-auto mt-24 ${inter_font.className} `}
+      className={`w-11/12 md:w-[70ch] lg:w-[80ch] 2xl:w-[1080px] text-text-primary mx-auto mt-24 ${inter_font.className} `}
     >
       <h1 className={`text-2xl tracking-wide mb-5`}>Nosotros</h1>
-      <hr className={`border-black`} />
+      <hr className={`border-text-secondary`} />
       <div>
         {parrafos &&
           parrafos.map((parrafo, index) => (

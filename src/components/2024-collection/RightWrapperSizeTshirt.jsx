@@ -33,7 +33,7 @@ export default function RightWrapperSizeTshirt({ polo, sizes }) {
         {sizes.map((size, index) => (
           <button
             key={index}
-            className={`col-span-1 row-span-1 px-3 py-1 text-center border border-black transition-all ${
+            className={`col-span-1 row-span-1 px-3 py-1 text-center border text-text-primary border-text-primary transition-all ${
               size.quantityOfSize > 0
                 ? params.get("size") === size.sizeName
                   ? "bg-slate-500 text-white"

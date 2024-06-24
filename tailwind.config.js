@@ -8,6 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        background: "rgba(var(--background))",
+        "secondary-color": "rgba(var(--secondary-color))",
+        "text-primary": "rgba(var(--text-primary))",
+        "text-secondary": "rgba(var(--text-secondary))",
+        "third-color-orange": "rgba(var(--bg-menu-mobile))",
+        "text-menu-mobile": "rgba(var(--text-menu-mobile))",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -86,4 +94,5 @@ module.exports = {
       });
     },
   ],
+  darkMode: 'class',
 };

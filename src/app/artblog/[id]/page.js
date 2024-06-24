@@ -43,7 +43,7 @@ export default async function IndividualBlog({ params }) {
                 </h2>
                 <ButtonFavoriteBlog notSession={notSession} idUser={userIdSession} idBlog={id} initialFavorite={isFavorite} />
             </div>
-            <div className={`flex items-center justify-between w-11/12 md:w-full 2xl:w-[1080px] mt-8 mx-auto text-gray-500 ${jost_font.className}`}>
+            <div className={`flex items-center justify-between w-11/12 md:w-full 2xl:w-[1080px] mt-8 mx-auto text-text-secondary ${jost_font.className}`}>
                 <p>{authorName}</p>
                 <p>{new Date(individualBlogServer.createdAt).toLocaleDateString()}</p>
             </div>

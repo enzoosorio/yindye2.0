@@ -2,3 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.light {
+    --background: 255 255 255;
+    --secondary-color: 253 253 251;
+    --text-primary: 0 0 0;
+    --text-secondary: 125 121 118;
+    --bg-menu-mobile : 251 146 60;
+    --text-menu-mobile : 255 255 255;
+
+    background: rgba(var(--background));
+}
+
+.dark {
+    --background: 24 25 26;
+    --secondary-color: 36 37 38;
+    --text-primary: 228 230 235;
+    --text-secondary: 176 179 184;
+    --bg-menu-mobile : 191 96 18;
+    --text-menu-mobile : 255 255 255;
+
+    background: rgba(var(--background));
+}
+
+
+.neon-effect {
+    color: #fff;
+    text-shadow:
+      0 0 1px #fff,
+      0 0 1px #eee;
+  }
+  

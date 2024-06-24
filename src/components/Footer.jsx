@@ -11,7 +11,7 @@ export default function Footer() {
   con ustedes, quisiera más información por favor`;
 
   return (
-    <section className="relative flex w-11/12 md:w-full  2xl:w-[1080px] mx-auto items-center justify-center mt-20  mb-3 gap-5 ">
+    <section className="relative flex w-11/12 md:w-full text-text-primary  2xl:w-[1080px] mx-auto items-center justify-center mt-20  mb-3 gap-5 ">
       <h2 className="w-20 text-sm md:text-base ">
         YinDye - 2023 &copy; Todos los derechos reservados.
       </h2>

@@ -30,7 +30,7 @@ export default function Blogs() {
   return (
     <>
       <div className="flex justify-between items-center ">
-        <h3>Ordenar por:</h3>
+        <h3 className="text-text-primary">Ordenar por:</h3>
         <ul className="flex justify-center items-center gap-3 bg-stone-400 p-1 lg:p-2 rounded-2xl">
           <li
             onClick={handleSearchParams("reciente")}

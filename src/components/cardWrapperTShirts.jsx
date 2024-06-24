@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { infoTShirts } from "../utils/2024_collection";
 import Link from "next/link";
 import { getPolosToHero } from "@/data/polo";
 import { getImagePoloById } from "@/data/imagesPolo";
@@ -33,7 +32,7 @@ export default async function CardWrapperTShirt() {
                 width={563}
                 height={845}
               />
-              <article className="flex flex-col gap-5 text-center pt-5">
+              <article className="flex flex-col gap-5 text-text-primary text-center pt-5">
                 <h3>{tshirt.smallNameProduct.toUpperCase()}</h3>
                 <h4>{tshirt.nameProduct.toUpperCase()}</h4>
                 <h6>S/.{tshirt.price}</h6>

@@ -48,7 +48,7 @@ export default function CardWrapper() {
             />
             {showText ? (
               <p
-                className={`text-3xl lg:text-4.5xl ${card.font.className} z-40`}
+                className={`text-3xl lg:text-4.5xl text-secondary-color ${card.font.className} z-40`}
               >
                 {card.text.toUpperCase()}
               </p>

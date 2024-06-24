@@ -13,7 +13,7 @@ export default function TextEffect({ children }) {
     <>
       <h2
         ref={subtitleRef}
-        className={`mt-[68px] w-full 2xl:w-[1080px] text-center md:text-left text-3xl lg:text-4xl font-bold mx-auto transition-opacity duration-700 ${
+        className={`mt-[68px] w-full 2xl:w-[1080px] text-center md:text-left text-3xl lg:text-4xl font-bold text-text-primary mx-auto transition-opacity duration-700 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
