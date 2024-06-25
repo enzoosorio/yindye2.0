@@ -29,7 +29,7 @@ export default async function CollectionTshirtsWrapper() {
           <Link
             key={tshirt.id}
             href={`/2024_collection/tshirts/${tshirt.id}`}
-            className={`mt-14 md:mt-16 hover:scale-[1.03] transition-transform ${
+            className={`mt-14 md:mt-16 hover:scale-[1.03] border border-gray-400 border-b-gray-400 transition-transform ${
               index % 3 === 0
                 ? "col-span-2 row-span-1 md:w-[600px] md:mx-auto"
                 : "col-span-1 row-span-1 md:w-64 md:mx-auto"
@@ -41,7 +41,7 @@ export default async function CollectionTshirtsWrapper() {
                 alt={`Image polo ${index}`}
                 width={563}
                 height={845}
-                className="w-full rounded-md"
+                className="w-full"
               />
               <h2 className="pl-2 w-full text-sm md:text-base">
                 {tshirt.nameProduct}

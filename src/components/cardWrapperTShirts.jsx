@@ -24,7 +24,7 @@ export default async function CardWrapperTShirt() {
           <Link key={tshirt.id} href={`/2024_collection/tshirts/${tshirt.id}`}>
             <div
               key={tshirt.id}
-              className="w-full flex flex-col items-center justify-center rounded-xl shadow-xl hover:shadow-2xl cursor-pointer transition-all pb-7"
+              className="w-full flex flex-col items-center justify-center shadow-xl border border-gray-400 hover:shadow-2xl cursor-pointer transition-all pb-7"
             >
               <Image
                 src={tshirt.image}

@@ -32,6 +32,10 @@ module.exports = {
       },
       transitionTimingFunction: {
         'custom-ease': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      boxShadow: {
+        'whiteXl': '0 20px 25px -5px rgb(250 250 250 / 0.1), 0 8px 10px -6px rgb(250 250 250 / 0.1)',
+        'white2Xl': '0 25px 50px -2px rgb(250 250 250 / 0.25)'
       }
     },
   },

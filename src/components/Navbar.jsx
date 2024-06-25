@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import { useCurrentRole } from "@/hooks/currentRole";
 import ThemeSwitch from "@/components/buttonContact/buttonToggleTheme";
 import { useTheme } from "next-themes";
+import { useToggleTheme } from "@/store/useToggleTheme";
 
 export default function Navbar({ session }) {
   const pathname = usePathname();
@@ -26,6 +27,8 @@ export default function Navbar({ session }) {
 
   const { userIsPressed, toggleUserIsPressed, setUserIsPressed } =
     useStorePannel();
+
+  const { toggleThemeIsDark } = useToggleTheme();
 
   useEffect(() => {
     if (userIsPressed) {
@@ -66,18 +69,27 @@ export default function Navbar({ session }) {
         </Link>
       </div>
       <button
+        onClick={() => {
+          toggleThemeIsDark;
+        }}
         className="block md:hidden absolute cursor-pointer hover:scale-110 w-max"
         style={{ left: "calc(50% + 60px)" }}
       >
         <ThemeSwitch />
       </button>
       <button
+        onClick={() => {
+          toggleThemeIsDark;
+        }}
         className="hidden md:block xl:hidden absolute cursor-pointer hover:scale-110 w-max"
         style={{ left: "calc(40% - 35px)" }}
       >
         <ThemeSwitch />
       </button>
       <button
+        onClick={() => {
+          toggleThemeIsDark;
+        }}
         className="hidden xl:block absolute cursor-pointer hover:scale-110 w-max"
         style={{ left: "calc(60% - 35px)" }}
       >

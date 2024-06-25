@@ -64,16 +64,26 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
         blogsWithAuthorName.map((blog) => (
           <div
             key={blog.id}
-            className="w-auto md:w-[48%] rounded-lg shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
+            className="w-auto md:w-[48%] border border-gray-600 border-b-gray-400 rounded-lg shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
           >
             <Link href={`/artblog/${blog.id}`} className="w-full">
-              <Image
-                src={blog.mainImage}
-                alt={blog.altMainImage}
-                className="w-full object-cover rounded-lg"
-                width={250}
-                height={200}
-              />
+              {/* div de imagenes, una sera de fondo y la otra nitida, esto es por si no llega a tener las medidas necesarias. */}
+              <div className="relative w-full h-[300px] flex overflow-hidden">
+                <Image
+                  src={blog.mainImage}
+                  alt={blog.altMainImage}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 w-full -z-10 blur-md rounded-lg"
+                  width={250}
+                  height={200}
+                />
+                <Image
+                  src={blog.mainImage}
+                  alt={blog.altMainImage}
+                  className="w-full object-contain bg-no-repeat rounded-lg"
+                  width={250}
+                  height={200}
+                />
+              </div>
               <div className="flex flex-col p-2 gap-2">
                 <h5 className="text-lg lg:text-xl font-bold text-text-primary">
                   {blog.title}
@@ -109,7 +119,7 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
         favoriteBlogs.map((blog) => (
           <div
             key={blog.id}
-            className="w-auto md:w-[48%] border-2 shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
+            className="w-auto md:w-[48%] rounded-lg shadow-lg mb-10 cursor-pointer hover:scale-105 transition-transform"
           >
             <Link href={`/artblog/${blog.id}`} className="w-full">
               <Image

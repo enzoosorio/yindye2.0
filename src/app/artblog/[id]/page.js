@@ -30,13 +30,22 @@ export default async function IndividualBlog({ params }) {
 
     return (
         <article className="relative w-full md:w-3/4 2xl:w-[1080px] mx-auto my-24">
-            <Image
-                src={individualBlogServer.mainImage}
-                alt={individualBlogServer.altMainImage}
-                width={500}
-                height={300}
-                className="w-full"
-            />
+            <div className="relative w-full h-[600px] flex overflow-hidden">
+                <Image
+                    src={individualBlogServer.mainImage}
+                    alt={individualBlogServer.altMainImage}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 w-full -z-10 blur-md rounded-lg"
+                    width={500}
+                    height={300}
+                />
+                <Image
+                    src={individualBlogServer.mainImage}
+                    alt={individualBlogServer.altMainImage}
+                    className="w-full object-contain bg-no-repeat rounded-lg"
+                    width={500}
+                    height={300}
+                />
+            </div>
             <div className="flex flex-col md:flex-row justify-between items-center md:h-28 py-7 md:py-0 gap-6 md:gap-0">
                 <h2 className={`text-center md:text-left text-3.5xl lg:text-4xl font-bold ${jost_font.className}`}>
                     {individualBlogServer.title}

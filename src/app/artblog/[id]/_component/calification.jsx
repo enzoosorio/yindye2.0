@@ -3,11 +3,13 @@ import { calificateBlog } from "@/actions/calificateBlog";
 import { useState, useTransition } from "react";
 import { useParams } from "next/navigation";
 import { toast, Bounce } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export const Calification = ({ notSession, valueCalification }) => {
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [valueStar, setValueStar] = useState(valueCalification || 0);
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const params = useParams();
   const { id } = params;
@@ -45,6 +47,7 @@ export const Calification = ({ notSession, valueCalification }) => {
             transition: Bounce,
           });
         }
+        router.refresh();
       });
     });
   };
