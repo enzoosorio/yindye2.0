@@ -5,7 +5,7 @@ import { BlogSchemaOnServer } from '@/schemas/blogSchema';
 import { db } from '@/utils/db/prisma';
 import { auth } from '@/auth';
 
-export const upBlog = async(data : z.infer<typeof BlogSchemaOnServer>) => {
+export const upBlog = async(data : z.infer<typeof BlogSchemaOnServer>, description : string) => {
 
     const session = await auth();
     const idUser = session?.user?.id;
@@ -19,7 +19,7 @@ export const upBlog = async(data : z.infer<typeof BlogSchemaOnServer>) => {
         return {error : 'Algunos datos son incorrectos!'};
     }
 
-    const {description, title, altFinalImage, altMainImage, finalImage, mainImage} = validateValuesBlog.data
+    const { title, altFinalImage, altMainImage, finalImage, mainImage} = validateValuesBlog.data
 
     
     try {

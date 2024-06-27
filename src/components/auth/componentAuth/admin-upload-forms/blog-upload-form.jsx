@@ -3,13 +3,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BlogSchema } from "../../../../schemas/blogSchema";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { FormError } from "../../../form-messages/form-error";
 import { FormSuccess } from "../../../form-messages/form-success";
 import { upBlog } from "@/actions/upBlog";
 import { useEdgeStore } from "@/lib/edgeStore";
+import { Editor } from "@tinymce/tinymce-react";
 
 export const UploadBlog = () => {
+  const editorRef = useRef(null);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
@@ -21,7 +23,6 @@ export const UploadBlog = () => {
   } = useForm({
     resolver: zodResolver(BlogSchema),
   });
-  const hotkeyBreak = "<br/>";
 
   const { edgestore } = useEdgeStore();
 
@@ -43,6 +44,13 @@ export const UploadBlog = () => {
           })
         : null;
 
+      if (!editorRef.current.getContent()) {
+        setError("no has escrito una descripcion en el editor!");
+        return;
+      }
+
+      const editorText = editorRef.current.getContent();
+
       const formData = {
         ...data,
         mainImage: resMainImage?.url,
@@ -50,7 +58,7 @@ export const UploadBlog = () => {
       };
 
       startTransition(() => {
-        upBlog(formData).then((data) => {
+        upBlog(formData, editorText).then((data) => {
           setError(data?.error);
           setSuccess(data?.success);
         });
@@ -80,12 +88,6 @@ export const UploadBlog = () => {
             escalables.
           </small>
         </div>
-        <div>
-          <p>
-            <b>Importante: </b>Para saltos de linea en la descripcion, se debe
-            colocar el hotkey : {hotkeyBreak}
-          </p>
-        </div>
       </div>
       <form
         className="mt-7 flex flex-col gap-3"
@@ -104,19 +106,30 @@ export const UploadBlog = () => {
             <FormError errorMessage={errors.title?.message.toString()} />
           )}
         </label>
-        <label>
-          Descripcion
-          <textarea
-            type="text"
-            placeholder="el blog empieza con..."
-            disabled={isPending}
-            className="mt-2 block border-2 resize-none rounded-sm py-1 px-2 mx-auto w-[30ch] sm:w-[35ch] md:w-[45ch] transition-all duration-700  outline-orange-400"
-            {...register("description")}
-          ></textarea>
-          {errors && (
-            <FormError errorMessage={errors.description?.message.toString()} />
-          )}
-        </label>
+        <label>Descripción</label>
+        <Editor
+          apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+          onInit={(_evt, editor) => (editorRef.current = editor)}
+          init={{
+            height: 500,
+            menubar: false,
+            plugins:
+              "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+            toolbar:
+              "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+            tinycomments_mode: "embedded",
+            tinycomments_author: "Author name",
+            mergetags_list: [
+              { value: "First.Name", title: "First Name" },
+              { value: "Email", title: "Email" },
+            ],
+            ai_request: (request, respondWith) =>
+              respondWith.string(() =>
+                Promise.reject("See docs to implement AI Assistant")
+              ),
+          }}
+          initialValue="Ingresa aca el contenido del blog!"
+        />
         <label>
           Imagen principal
           <input

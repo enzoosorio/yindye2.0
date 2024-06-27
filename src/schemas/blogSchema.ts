@@ -8,9 +8,9 @@ export const BlogSchema = z.object({
         message : 'El titulo debe ser una cadena de texto.'
     }).min(5, { message : 'Titulo de minimo 5 caracteres'}),
 
-    description : z.string().min(10, {
-        message : 'La descripcion debe ser minimo de 10 caracteres'
-    }),
+    // description : z.string().min(10, {
+    //     message : 'La descripcion debe ser minimo de 10 caracteres'
+    // }),
 
     mainImage: z.any().refine((files) => {
         if (!files) return false;
@@ -48,9 +48,9 @@ export const BlogSchemaOnServer = z.object({
         message : 'El titulo debe ser una cadena de texto.'
     }).min(5, { message : 'Titulo de minimo 5 caracteres'}),
 
-    description : z.string().min(10, {
-        message : 'La descripcion debe ser minimo de 10 caracteres'
-    }),
+    // description : z.string().min(10, {
+    //     message : 'La descripcion debe ser minimo de 10 caracteres'
+    // }),
 
     mainImage: z.string(),
 

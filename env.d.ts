@@ -12,7 +12,7 @@ declare namespace NodeJS {
       EDGE_STORE_SECRET_KEY : string;
       PHONE_NUMBER : string;
       NEXT_PUBLIC_APP_URL: string;
-
+      NEXT_PUBLIC_TINY_EDITOR_API_KEY : string;
     }
   }
   
