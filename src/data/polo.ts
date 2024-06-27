@@ -33,11 +33,26 @@ export const getPolosToHero = async () => {
             orderBy: {
                 createdAt: 'desc'
             },
-            take: 3
+            take: 3,
+            select: {
+                id: true,
+                nameProduct: true,
+                smallNameProduct: true,
+                price: true,
+                images: {
+                    take: 1,
+                    select: {
+                        url: true, 
+                    },
+                },
+            },
         });
-        
-        return polos;
+
+        return polos.map(polo => ({
+            ...polo,
+            imageUrl: polo.images[0]?.url || null,
+        }));
     } catch (error) {
-        return console.log(error);
+        console.log(error);
     }
 }
