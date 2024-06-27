@@ -56,11 +56,16 @@ export async function addFavoriteBlog(userId : string, postId : string) {
 
   export async function getFavoritesBlogsIdsPagination(userId : string, numberOfBlogs : number, page :number) {
     const favorites = await db.favoritePost.findMany({
-      take : numberOfBlogs,
-      skip : page * numberOfBlogs,
       where: {
         userId : userId
       },
+      orderBy : {
+        post : {
+          createdAt : 'desc'
+        }
+      },
+      take : numberOfBlogs,
+      skip : page * numberOfBlogs,
     });
     return favorites;
   }

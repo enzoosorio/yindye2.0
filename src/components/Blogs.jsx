@@ -25,7 +25,7 @@ export default function Blogs() {
       params.set("searchindex", "reciente");
       replace(`${pathname}?${params.toString()}`);
     }
-  }, []);
+  }, [searchParams, pathname, replace]);
 
   return (
     <>

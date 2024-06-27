@@ -9,19 +9,25 @@ import BlogSkeleton from '@/skeletons/blogWrapperSkeleton'
 import { getNumberOfBlogsPosts } from '@/data/blog'
 import { auth } from '@/auth'
 import { ButtonsPagination } from '@/components/buttonContact/buttonsPagination'
+import { getNumberOfFavoritesBlogsPosts } from "@/data/favoriteBlog";
 
 export default async function ArtBlog({ searchParams }) {
     const searchIndex = searchParams?.searchindex;
     const page = parseInt(searchParams?.page || 0);
+    const favoritePage = parseInt(searchParams?.favoritepage);
     // TODO : usar Suspense para poder envolver mis componentes que tienen que cargar
     // algunos archivos, para poder colocar un skeleton Fallback, para mejorar la UX.
     const session = await auth()
     const userId = session?.user.id;
 
     const NUMBER_OF_BLOGS_PER_PAGE = 6;
+    const NUMBER_OF_FAVORITES_BLOGS_PER_PAGE = 4;
     const lengthBlogs = await getNumberOfBlogsPosts();
 
     const numberOfPages = Math.ceil(lengthBlogs / NUMBER_OF_BLOGS_PER_PAGE);
+
+    const lengthFavoriteBlogs = await getNumberOfFavoritesBlogsPosts()
+    const numberOfFavoritePages = Math.ceil(lengthFavoriteBlogs / NUMBER_OF_FAVORITES_BLOGS_PER_PAGE);
 
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
@@ -35,9 +41,10 @@ export default async function ArtBlog({ searchParams }) {
             <div className="w-11/12 md:w-full mx-auto mt-24 2xl:w-[1080px] ">
                 <Blogs searchIndex={searchIndex} />
                 <Suspense fallback={<BlogSkeleton />}>
-                    <CardBlogsWrapper searchindexparam={searchIndex} numberOfBlogs={NUMBER_OF_BLOGS_PER_PAGE} page={page} />
+                    {page > numberOfPages ? <p>La pagina seleccionada no existe!</p> :
+                        <CardBlogsWrapper searchindexparam={searchIndex} numberOfBlogs={NUMBER_OF_BLOGS_PER_PAGE} page={page} />}
                 </Suspense>
-                <ButtonsPagination numberOfPages={numberOfPages} />
+                <ButtonsPagination numberOfPages={numberOfPages} numberOfFavoritePages={numberOfFavoritePages} />
             </div>
             <p className={`${hepta_slab_font.className} w-11/12 md:w-full text-pretty  2xl:w-[1080px] mx-auto mt-24`}>
                 En esta sección, nos proponemos no solo mostrar nuestras creaciones artísticas, sino también inspirarte a explorar y desarrollar tu propio estilo.

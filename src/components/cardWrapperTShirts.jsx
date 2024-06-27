@@ -6,8 +6,6 @@ import { getImagePoloById } from "@/data/imagesPolo";
 export default async function CardWrapperTShirt() {
   const polos = await getPolosToHero();
 
-  console.log(polos);
-
   if (!polos || !polos.length) {
     <p className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-24 text-center">
       No existen polos 😖

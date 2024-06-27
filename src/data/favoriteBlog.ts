@@ -1,3 +1,4 @@
+import { db } from "@/utils/db/prisma";
 import { getBlogById } from "./blog";
 
 // Definimos una interfaz para representar la estructura del objeto favoriteBlogsId
@@ -33,3 +34,14 @@ interface FavoriteBlog {
     }
   }
   
+  export const getNumberOfFavoritesBlogsPosts = async() => {
+    try {
+        
+        const numberOfPosts = await db.favoritePost.count();
+        
+        return numberOfPosts;
+    } 
+    catch (error) {
+        return console.log(error)
+    }
+}
