@@ -1,13 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getBlogs } from "@/data/blog";
+import { getBlogs, getBlogsPagination } from "@/data/blog";
 import { getUserById } from "@/data/user";
-import { getFavoritesBlogsIds } from "@/actions/favoriteBlog";
+import { getFavoritesBlogsIdsPagination } from "@/actions/favoriteBlog";
 import { auth } from "@/auth";
 import { getFavoriteBlogsByFavoritesIds } from "@/data/favoriteBlog";
 
-export default async function CardBlogsWrapper({ searchindexparam }) {
-  const blogsServer = await getBlogs();
+export default async function CardBlogsWrapper({
+  numberOfBlogs,
+  searchindexparam,
+  page,
+}) {
+  let blogsServer = [];
   const INSTAGRAM_ENZO = " (@enzoosorioortiz)";
   const INSTAGRAM_DIEGO = " (@ricardego)";
 
@@ -19,6 +23,27 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
         No se pudo encontrar blogs en la base de datos.
       </p>
     );
+  }
+
+  if (searchindexparam === "reciente") {
+    blogsServer = await getBlogsPagination(numberOfBlogs, page, "desc");
+  } else if (searchindexparam === "antiguo") {
+    blogsServer = await getBlogsPagination(numberOfBlogs, page, "asc");
+  }
+  if (searchindexparam === "favoritos") {
+    if (!session) {
+      return <p>debes loguearte para ver blogs favoritos!</p>;
+    }
+    const favoriteBlogsIds = await getFavoritesBlogsIdsPagination(
+      idUser,
+      numberOfBlogs,
+      page
+    );
+
+    if (!favoriteBlogsIds) {
+      return <p>No tienes blogs favoritos guardados!</p>;
+    }
+    var favoriteBlogs = await getFavoriteBlogsByFavoritesIds(favoriteBlogsIds);
   }
 
   let blogsWithAuthorName = [];
@@ -35,27 +60,6 @@ export default async function CardBlogsWrapper({ searchindexparam }) {
     };
 
     blogsWithAuthorName.push(blogWithAuthorName);
-  }
-
-  if (searchindexparam === "reciente") {
-    blogsWithAuthorName.sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
-  } else if (searchindexparam === "antiguo") {
-    blogsWithAuthorName.sort(
-      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-    );
-  }
-  if (searchindexparam === "favoritos") {
-    if (!session) {
-      return <p>debes loguearte para ver blogs favoritos!</p>;
-    }
-    const favoriteBlogsIds = await getFavoritesBlogsIds(idUser);
-
-    if (!favoriteBlogsIds) {
-      return <p>No tienes blogs favoritos guardados!</p>;
-    }
-    var favoriteBlogs = await getFavoriteBlogsByFavoritesIds(favoriteBlogsIds);
   }
 
   return (

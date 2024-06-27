@@ -13,7 +13,8 @@ module.exports = {
         "secondary-color": "rgba(var(--secondary-color))",
         "text-primary": "rgba(var(--text-primary))",
         "text-secondary": "rgba(var(--text-secondary))",
-        "third-color-orange": "rgba(var(--bg-menu-mobile))",
+        "third-color-orange": "rgba(var(--third-color-orange))",
+        "third-color-orange-hover": "rgba(var(--third-color-orange-hover))",
         "text-menu-mobile": "rgba(var(--text-menu-mobile))",
       },
       backgroundImage: {

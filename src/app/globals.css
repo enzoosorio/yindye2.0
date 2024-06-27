@@ -8,7 +8,8 @@
     --secondary-color: 253 253 251;
     --text-primary: 0 0 0;
     --text-secondary: 125 121 118;
-    --bg-menu-mobile : 251 146 60;
+    --third-color-orange : 251 146 60;
+    --third-color-orange-hover : 255, 177, 96;
     --text-menu-mobile : 255 255 255;
 
     background: rgba(var(--background));
@@ -19,7 +20,8 @@
     --secondary-color: 36 37 38;
     --text-primary: 228 230 235;
     --text-secondary: 176 179 184;
-    --bg-menu-mobile : 191 96 18;
+    --third-color-orange : 191 96 18;
+    --third-color-orange-hover : 225, 110, 15;
     --text-menu-mobile : 255 255 255;
 
     background: rgba(var(--background));

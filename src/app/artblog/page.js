@@ -6,16 +6,22 @@ import TextEffect from "@/components/textEffect";
 import CardBlogsWrapper from "@/components/CardBlogsWrapper";
 import { Suspense } from "react";
 import BlogSkeleton from '@/skeletons/blogWrapperSkeleton'
-import { getFavoritesBlogsIds } from "@/actions/favoriteBlog";
+import { getNumberOfBlogsPosts } from '@/data/blog'
 import { auth } from '@/auth'
+import { ButtonsPagination } from '@/components/buttonContact/buttonsPagination'
 
 export default async function ArtBlog({ searchParams }) {
     const searchIndex = searchParams?.searchindex;
+    const page = parseInt(searchParams?.page || 0);
     // TODO : usar Suspense para poder envolver mis componentes que tienen que cargar
     // algunos archivos, para poder colocar un skeleton Fallback, para mejorar la UX.
     const session = await auth()
-    const userId = session?.user.id
-    const favorites = await getFavoritesBlogsIds(userId || '');
+    const userId = session?.user.id;
+
+    const NUMBER_OF_BLOGS_PER_PAGE = 6;
+    const lengthBlogs = await getNumberOfBlogsPosts();
+
+    const numberOfPages = Math.ceil(lengthBlogs / NUMBER_OF_BLOGS_PER_PAGE);
 
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
@@ -29,8 +35,9 @@ export default async function ArtBlog({ searchParams }) {
             <div className="w-11/12 md:w-full mx-auto mt-24 2xl:w-[1080px] ">
                 <Blogs searchIndex={searchIndex} />
                 <Suspense fallback={<BlogSkeleton />}>
-                    <CardBlogsWrapper searchindexparam={searchIndex} />
+                    <CardBlogsWrapper searchindexparam={searchIndex} numberOfBlogs={NUMBER_OF_BLOGS_PER_PAGE} page={page} />
                 </Suspense>
+                <ButtonsPagination numberOfPages={numberOfPages} />
             </div>
             <p className={`${hepta_slab_font.className} w-11/12 md:w-full text-pretty  2xl:w-[1080px] mx-auto mt-24`}>
                 En esta sección, nos proponemos no solo mostrar nuestras creaciones artísticas, sino también inspirarte a explorar y desarrollar tu propio estilo.
