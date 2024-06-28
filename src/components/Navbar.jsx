@@ -5,7 +5,6 @@ import Link from "next/link";
 import clsx from "clsx";
 import Logo from "../assets/imagenesyotrosrecursos/parte_del_logo/Logo_transparent_yindye_.webp";
 import Logo_cat_transparent from "../assets/imagenesyotrosrecursos/parte_del_logo/gato_caminando_parte_del_logo.webp";
-import Black_Logo_cat from "@/assets/imagenesyotrosrecursos/parte_del_logo/gato-negro-dibujo-removebg-preview.png";
 import { hepta_slab_font } from "../utils/fonts";
 import { IoLogoOctocat } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
@@ -53,17 +52,7 @@ export default function Navbar({ session }) {
           <Image
             src={Logo_cat_transparent}
             width={70}
-            className={`${
-              resolvedTheme === "dark" ? "hidden" : "block"
-            } absolute top-2 -left-1 md:-left-5 -z-10 drop-shadow-custom`}
-            alt="Cat part of logo YinDye"
-          />
-          <Image
-            src={Black_Logo_cat}
-            width={70}
-            className={`${
-              resolvedTheme === "dark" ? "block" : "hidden"
-            } absolute -top-10 -left-1 md:-left-4 -z-10 drop-shadow-custom`}
+            className={`absolute top-2 -left-1 md:-left-5 -z-10 drop-shadow-custom`}
             alt="Cat part of logo YinDye"
           />
         </Link>

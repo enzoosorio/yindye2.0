@@ -34,14 +34,41 @@ interface FavoriteBlog {
     }
   }
   
-  export const getNumberOfFavoritesBlogsPosts = async() => {
+  export const getNumberOfFavoritesBlogsPosts = async(userId : string) => {
     try {
         
-        const numberOfPosts = await db.favoritePost.count();
+        const numberOfPosts = await db.favoritePost.count({
+          where : {
+            userId : userId
+          }
+        });
         
         return numberOfPosts;
     } 
     catch (error) {
         return console.log(error)
     }
+}
+
+export async function getFavoritesBlogsIdsPagination(userId : string, numberOfBlogs :number, page : number, skip : number) {
+  
+ try {
+  const favorites = await db.favoritePost.findMany({
+    where: {
+      userId: userId
+    },
+    skip: skip, 
+    take: numberOfBlogs,
+    orderBy: {
+      post: {
+        createdAt: 'desc'
+      }
+    },
+  });
+
+   return favorites;
+ } catch (error) {
+    console.error(error);
+ }
+
 }

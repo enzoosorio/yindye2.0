@@ -12,6 +12,8 @@ import { ButtonsPagination } from '@/components/buttonContact/buttonsPagination'
 import { getNumberOfFavoritesBlogsPosts } from "@/data/favoriteBlog";
 
 export default async function ArtBlog({ searchParams }) {
+
+
     const searchIndex = searchParams?.searchindex;
     const page = parseInt(searchParams?.page || 0);
     const favoritePage = parseInt(searchParams?.favoritepage);
@@ -20,15 +22,18 @@ export default async function ArtBlog({ searchParams }) {
     const session = await auth()
     const userId = session?.user.id;
 
-    const NUMBER_OF_BLOGS_PER_PAGE = 6;
+
+    console.log(userId)
+    const NUMBER_OF_BLOGS_PER_PAGE = 3;
     const NUMBER_OF_FAVORITES_BLOGS_PER_PAGE = 4;
     const lengthBlogs = await getNumberOfBlogsPosts();
 
     const numberOfPages = Math.ceil(lengthBlogs / NUMBER_OF_BLOGS_PER_PAGE);
 
-    const lengthFavoriteBlogs = await getNumberOfFavoritesBlogsPosts()
+    const lengthFavoriteBlogs = await getNumberOfFavoritesBlogsPosts(userId)
+    console.log(lengthFavoriteBlogs)
     const numberOfFavoritePages = Math.ceil(lengthFavoriteBlogs / NUMBER_OF_FAVORITES_BLOGS_PER_PAGE);
-
+    console.log(numberOfFavoritePages)
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
             <Image src={BannerFarro} alt="banner model farro" className="w-full 2xl:w-[1080px] mx-auto" />
@@ -42,7 +47,7 @@ export default async function ArtBlog({ searchParams }) {
                 <Blogs searchIndex={searchIndex} />
                 <Suspense fallback={<BlogSkeleton />}>
                     {page > numberOfPages ? <p>La pagina seleccionada no existe!</p> :
-                        <CardBlogsWrapper searchindexparam={searchIndex} numberOfBlogs={NUMBER_OF_BLOGS_PER_PAGE} page={page} />}
+                        <CardBlogsWrapper searchindexparam={searchIndex} numberOfBlogs={NUMBER_OF_BLOGS_PER_PAGE} page={page} numberOfFavoriteBlogs={NUMBER_OF_FAVORITES_BLOGS_PER_PAGE} favoritePage={favoritePage} />}
                 </Suspense>
                 <ButtonsPagination numberOfPages={numberOfPages} numberOfFavoritePages={numberOfFavoritePages} />
             </div>

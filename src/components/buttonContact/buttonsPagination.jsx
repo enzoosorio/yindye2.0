@@ -7,36 +7,42 @@ import { inter_font } from "@/utils/fonts";
 
 export const ButtonsPagination = ({ numberOfPages, numberOfFavoritePages }) => {
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
   const isFavoriteSelected = searchParams.get("searchindex") === "favoritos";
 
   const page = parseInt(searchParams.get("page")) || 0;
   const favoritepage = parseInt(searchParams.get("favoritepage")) || 0;
 
   const actualFormatPage = isFavoriteSelected ? favoritepage : page;
+  console.log(actualFormatPage);
   const actualNumberOfPages = isFavoriteSelected
     ? numberOfFavoritePages
     : numberOfPages;
-
+  console.log(actualFormatPage);
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
+  console.log(pathname);
+
   const handlePageChange = (newPage) => {
-    if (!isFavoriteSelected) {
+    const params = new URLSearchParams(searchParams);
+    if (isFavoriteSelected) {
+      console.log("dentro");
       startTransition(() => {
-        params.set("page", newPage.toString());
+        console.log("afuera");
+        params.set("favoritepage", newPage.toString());
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       });
     } else {
       startTransition(() => {
-        params.set("favoritepage", newPage.toString());
+        params.set("page", newPage.toString());
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       });
     }
   };
 
   useEffect(() => {
+    const params = new URLSearchParams(searchParams);
     if (isFavoriteSelected) {
       params.delete("page");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
@@ -55,7 +61,7 @@ export const ButtonsPagination = ({ numberOfPages, numberOfFavoritePages }) => {
         });
       }
     }
-  }, [isFavoriteSelected, params, pathname, router, startTransition]);
+  }, [isFavoriteSelected, pathname, router, startTransition]);
 
   return (
     <div
@@ -65,14 +71,14 @@ export const ButtonsPagination = ({ numberOfPages, numberOfFavoritePages }) => {
     >
       <button
         onClick={() => {
-          if (page > 0) {
-            handlePageChange(page - 1);
+          if (actualFormatPage > 0) {
+            handlePageChange(actualFormatPage - 1);
           }
         }}
-        disabled={page === 0}
+        disabled={actualFormatPage === 0 || isPending}
         className={`rounded-full p-2 
           ${
-            page === 0 || isPending
+            actualFormatPage === 0 || isPending
               ? "bg-gray-500 cursor-default"
               : "bg-third-color-orange hover:bg-third-color-orange-hover"
           }`}
@@ -84,13 +90,13 @@ export const ButtonsPagination = ({ numberOfPages, numberOfFavoritePages }) => {
       </p>
       <button
         onClick={() => {
-          if (page < actualNumberOfPages - 1) {
-            handlePageChange(page + 1);
+          if (actualFormatPage < actualNumberOfPages - 1) {
+            handlePageChange(actualFormatPage + 1);
           }
         }}
-        disabled={page === actualNumberOfPages - 1}
+        disabled={actualFormatPage === actualNumberOfPages - 1 || isPending}
         className={`rounded-full p-2 ${
-          page === actualNumberOfPages - 1 || isPending
+          actualFormatPage === actualNumberOfPages - 1 || isPending
             ? "bg-gray-500 cursor-default"
             : "bg-third-color-orange hover:bg-third-color-orange-hover"
         }`}
