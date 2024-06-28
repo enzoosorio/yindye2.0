@@ -23,7 +23,6 @@ export default async function ArtBlog({ searchParams }) {
     const userId = session?.user.id;
 
 
-    console.log(userId)
     const NUMBER_OF_BLOGS_PER_PAGE = 6;
     const NUMBER_OF_FAVORITES_BLOGS_PER_PAGE = 4;
     const lengthBlogs = await getNumberOfBlogsPosts();
@@ -31,9 +30,8 @@ export default async function ArtBlog({ searchParams }) {
     const numberOfPages = Math.ceil(lengthBlogs / NUMBER_OF_BLOGS_PER_PAGE);
 
     const lengthFavoriteBlogs = await getNumberOfFavoritesBlogsPosts(userId)
-    console.log(lengthFavoriteBlogs)
+
     const numberOfFavoritePages = Math.ceil(lengthFavoriteBlogs / NUMBER_OF_FAVORITES_BLOGS_PER_PAGE);
-    console.log(numberOfFavoritePages)
     return (
         <section className={`relative w-full md:w-3/4 mx-auto mt-24 flex flex-col justify-center ${inter_font.className}`}>
             <Image src={BannerFarro} alt="banner model farro" className="w-full 2xl:w-[1080px] mx-auto" />
