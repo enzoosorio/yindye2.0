@@ -48,8 +48,6 @@ export default async function CardBlogsWrapper({
       skipDB
     );
 
-    console.log(favoriteBlogsIds);
-
     if (!favoriteBlogsIds) {
       return (
         <p className="w-10/12 md:w-max mx-auto text-lg p-1 rounded-xl text-center bg-yellow-600 mt-20 text-white">
@@ -58,12 +56,10 @@ export default async function CardBlogsWrapper({
       );
     }
     blogsServer = await getFavoriteBlogsByFavoritesIds(favoriteBlogsIds);
-    console.log(blogsServer);
   }
 
   let blogsWithAuthorName = [];
 
-  console.log(blogsServer);
   for (let index = 0; index < blogsServer.length; index++) {
     const authorBlog = await getUserById(blogsServer[index].authorId);
     let authorName = authorBlog.name;

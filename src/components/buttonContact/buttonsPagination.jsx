@@ -13,23 +13,19 @@ export const ButtonsPagination = ({ numberOfPages, numberOfFavoritePages }) => {
   const favoritepage = parseInt(searchParams.get("favoritepage")) || 0;
 
   const actualFormatPage = isFavoriteSelected ? favoritepage : page;
-  console.log(actualFormatPage);
+
   const actualNumberOfPages = isFavoriteSelected
     ? numberOfFavoritePages
     : numberOfPages;
-  console.log(actualFormatPage);
+
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  console.log(pathname);
-
   const handlePageChange = (newPage) => {
     const params = new URLSearchParams(searchParams);
     if (isFavoriteSelected) {
-      console.log("dentro");
       startTransition(() => {
-        console.log("afuera");
         params.set("favoritepage", newPage.toString());
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       });
