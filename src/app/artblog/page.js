@@ -24,7 +24,7 @@ export default async function ArtBlog({ searchParams }) {
 
 
     console.log(userId)
-    const NUMBER_OF_BLOGS_PER_PAGE = 3;
+    const NUMBER_OF_BLOGS_PER_PAGE = 6;
     const NUMBER_OF_FAVORITES_BLOGS_PER_PAGE = 4;
     const lengthBlogs = await getNumberOfBlogsPosts();
 
