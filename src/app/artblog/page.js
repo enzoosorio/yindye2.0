@@ -1,4 +1,4 @@
-import { hepta_slab_font, inter_font } from "@/utils/fonts";
+import { hepta_slab_font, inter_font, onest_font } from "@/utils/fonts";
 import Image from "next/image";
 import BannerFarro from '../../assets/imagenesyotrosrecursos/banners/banner_imagen_farro_bg_brown_comprimido.webp';
 import Blogs from "@/components/Blogs";
@@ -49,7 +49,7 @@ export default async function ArtBlog({ searchParams }) {
                 </Suspense>
                 <ButtonsPagination numberOfPages={numberOfPages} numberOfFavoritePages={numberOfFavoritePages} />
             </div>
-            <p className={`${hepta_slab_font.className} w-11/12 md:w-full text-pretty  2xl:w-[1080px] mx-auto mt-24`}>
+            <p className={`${onest_font.className} w-11/12 md:w-full text-pretty text-lg  2xl:w-[1080px] mx-auto mt-24`}>
                 En esta sección, nos proponemos no solo mostrar nuestras creaciones artísticas, sino también inspirarte a explorar y desarrollar tu propio estilo.
                 El arte es un lenguaje universal que nos permite expresar nuestras emociones, pensamientos y perspectivas de una manera única
                 y personal.
@@ -57,7 +57,7 @@ export default async function ArtBlog({ searchParams }) {
                 Bajo ésta iniciativa, promovemos la libertad creativa sin restricciones, donde cada pincelada, nota tocada o actuación en
                 un centro es una manifestación auténtica del artista.
             </p>
-            <p className={`${hepta_slab_font.className} w-11/12 md:w-full text-pretty  2xl:w-[1080px] mx-auto mt-10 mb-10`}>
+            <p className={`${onest_font.className} w-11/12 md:w-full text-pretty text-lg  2xl:w-[1080px] mx-auto mt-10 mb-10`}>
                 Queremos que te sumes a nosotros en esta apasionante travesía artística. Ya seas un artista experimentado o un principiante, aquí encontrarás
                 inspiración y apoyo para que puedas descubrir y perfeccionar tu estilo único. ¡Súmate a #freeart y #yindyeart y deja que
                 tu creatividad florezca sin límites!

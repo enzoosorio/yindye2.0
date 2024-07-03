@@ -43,7 +43,7 @@ export default async function CollectionTshirtsWrapper() {
                 height={845}
                 className="w-full"
               />
-              <h2 className="pl-2 w-full text-sm md:text-base">
+              <h2 className="pl-2 w-full text-pretty text-sm md:text-base">
                 {tshirt.nameProduct}
               </h2>
               <p className="pl-2 w-full text-sm md:text-base">

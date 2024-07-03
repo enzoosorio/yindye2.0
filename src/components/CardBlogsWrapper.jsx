@@ -7,6 +7,10 @@ import {
   getFavoriteBlogsByFavoritesIds,
   getFavoritesBlogsIdsPagination,
 } from "@/data/favoriteBlog";
+import {
+  getCategoryNamesByPostId,
+  getCategoryiesIdByPostId,
+} from "@/data/categories";
 
 export default async function CardBlogsWrapper({
   numberOfBlogs,
@@ -21,13 +25,6 @@ export default async function CardBlogsWrapper({
 
   const session = await auth();
   const idUser = session?.user.id;
-  if (!blogsServer) {
-    return (
-      <p className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-24 text-center">
-        No se pudo encontrar blogs en la base de datos.
-      </p>
-    );
-  }
 
   if (searchindexparam === "reciente") {
     blogsServer = await getBlogsPagination(numberOfBlogs, page, "desc");
@@ -58,10 +55,21 @@ export default async function CardBlogsWrapper({
     blogsServer = await getFavoriteBlogsByFavoritesIds(favoriteBlogsIds);
   }
 
+  if (!blogsServer) {
+    return (
+      <p className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-24 text-center">
+        No se pudo encontrar blogs en la base de datos.
+      </p>
+    );
+  }
+
   let blogsWithAuthorName = [];
 
   for (let index = 0; index < blogsServer.length; index++) {
     const authorBlog = await getUserById(blogsServer[index].authorId);
+    const categoryNames = await getCategoryNamesByPostId(blogsServer[index].id);
+    console.log(categoryNames);
+
     let authorName = authorBlog.name;
     if (authorName === "Enzo Martin Osorio Ortiz") {
       authorName += INSTAGRAM_ENZO;
@@ -69,6 +77,7 @@ export default async function CardBlogsWrapper({
     const blogWithAuthorName = {
       ...blogsServer[index],
       authorName: authorName,
+      categories: categoryNames, // Agrega las categorías aquí
     };
 
     blogsWithAuthorName.push(blogWithAuthorName);
@@ -76,7 +85,7 @@ export default async function CardBlogsWrapper({
 
   return (
     <section className="w-11/12 md:w-full 2xl:w-[1080px] mx-auto mt-14 flex items-center justify-center flex-wrap gap-5">
-      {blogsWithAuthorName ? (
+      {blogsWithAuthorName.length > 0 ? (
         blogsWithAuthorName.map((blog) => (
           <div
             key={blog.id}
@@ -104,6 +113,16 @@ export default async function CardBlogsWrapper({
                 <h5 className="text-lg lg:text-xl font-bold text-text-primary">
                   {blog.title}
                 </h5>
+                <ul className="flex items-center justify-center gap-6 mb-5 mt-2 flex-wrap">
+                  {blog.categories.map((category, index) => (
+                    <li
+                      key={index}
+                      className="px-2 py-1 text-sm lg:text-base bg-third-color-orange text-text-menu-mobile rounded-xl text-center"
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
                 <h6 className="text-sm  text-text-secondary ">
                   {blog.authorName}
                 </h6>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BlogSchema } from "../../../../schemas/blogSchema";
 import { useRef, useState, useTransition } from "react";
@@ -8,31 +8,39 @@ import { FormError } from "../../../form-messages/form-error";
 import { FormSuccess } from "../../../form-messages/form-success";
 import { upBlog } from "@/actions/upBlog";
 import { useEdgeStore } from "@/lib/edgeStore";
-import { Editor } from "@tinymce/tinymce-react";
+import { Editor as TinyMCEEditor } from "tinymce";
+import {Editor } from '@tinymce/tinymce-react'
+import * as z from 'zod'
 
 export const UploadBlog = () => {
-  const editorRef = useRef(null);
+  const editorRef = useRef<TinyMCEEditor | null>(null);
   const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState();
-  const [success, setSuccess] = useState();
+  const [error, setError] = useState<string>();
+  const [success, setSuccess] = useState<string>();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<z.infer<typeof BlogSchema>>({
     resolver: zodResolver(BlogSchema),
   });
 
   const { edgestore } = useEdgeStore();
 
-  const handleSubmitBlogForm = async (data) => {
+  const handleSubmitBlogForm: SubmitHandler<z.infer<typeof BlogSchema>>= async (data) => {
     setError("");
     setSuccess("");
     const mainImageToServer = data.mainImage?.[0];
     const finalImageToServer = data.finalImage?.[0];
 
     try {
+
+      if(!editorRef.current){
+        setError('Debes agregar contenido de descripcion al blog! ')
+        return
+      }
+
       const resMainImage = await edgestore.myPublicFiles.upload({
         file: mainImageToServer,
         input: { type: "post" },
@@ -51,6 +59,8 @@ export const UploadBlog = () => {
 
       const editorText = editorRef.current.getContent();
 
+      const tagsInput = data.tags.split(',').map(tag => tag.trim());
+
       const formData = {
         ...data,
         mainImage: resMainImage?.url,
@@ -58,7 +68,7 @@ export const UploadBlog = () => {
       };
 
       startTransition(() => {
-        upBlog(formData, editorText).then((data) => {
+        upBlog(formData, editorText, tagsInput).then((data) => {
           setError(data?.error);
           setSuccess(data?.success);
         });
@@ -91,7 +101,7 @@ export const UploadBlog = () => {
       </div>
       <form
         className="mt-7 flex flex-col gap-3"
-        onSubmit={handleSubmit(handleSubmitBlogForm)}
+        onSubmit={handleSubmit (handleSubmitBlogForm)}
       >
         <label>
           Título del blog
@@ -103,7 +113,7 @@ export const UploadBlog = () => {
             {...register("title")}
           />
           {errors && (
-            <FormError errorMessage={errors.title?.message.toString()} />
+            <FormError errorMessage={errors.title?.message?.toString()} />
           )}
         </label>
         <label>Descripción</label>
@@ -114,7 +124,7 @@ export const UploadBlog = () => {
             height: 500,
             menubar: false,
             plugins:
-              "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+              "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
             toolbar:
               "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
             tinycomments_mode: "embedded",
@@ -123,10 +133,6 @@ export const UploadBlog = () => {
               { value: "First.Name", title: "First Name" },
               { value: "Email", title: "Email" },
             ],
-            ai_request: (request, respondWith) =>
-              respondWith.string(() =>
-                Promise.reject("See docs to implement AI Assistant")
-              ),
           }}
           initialValue="Ingresa aca el contenido del blog!"
         />
@@ -140,7 +146,7 @@ export const UploadBlog = () => {
             {...register("mainImage")}
           />
           {errors && (
-            <FormError errorMessage={errors.mainImage?.message.toString()} />
+            <FormError errorMessage={errors.mainImage?.message?.toString()} />
           )}
         </label>
         <label>
@@ -153,7 +159,7 @@ export const UploadBlog = () => {
             {...register("altMainImage")}
           />
           {errors && (
-            <FormError errorMessage={errors.altMainImage?.message.toString()} />
+            <FormError errorMessage={errors.altMainImage?.message?.toString()} />
           )}
         </label>
         <label>
@@ -166,21 +172,36 @@ export const UploadBlog = () => {
             {...register("finalImage")}
           />
           {errors && (
-            <FormError errorMessage={errors.finalImage?.message.toString()} />
+            <FormError errorMessage={errors.finalImage?.message?.toString()} />
           )}
         </label>
         <label>
           Alt de Imagen final (opcional)
           <input
             type="text"
-            placeholder="Sube el ALT de la imagen principal del blog aca"
+            placeholder="Sube el ALT de la imagen final del blog aca"
             disabled={isPending}
             className="mt-2 block border-2 rounded-sm py-1 px-2 mx-auto w-[30ch] sm:w-[35ch] md:w-[45ch] transition-all duration-700 outline-orange-400"
             {...register("altFinalImage")}
           />
           {errors && (
             <FormError
-              errorMessage={errors.altFinalImage?.message.toString()}
+              errorMessage={errors.altFinalImage?.message?.toString()}
+            />
+          )}
+        </label>
+        <label>
+          Etiquetas del blog <small>Por favor escribelo de esta manera : "Música,Deporte,Personal" sin las comillas</small>
+          <input
+            type="text"
+            placeholder="Sube los tags que deseas tener en tu blog"
+            disabled={isPending}
+            className="mt-2 block border-2 rounded-sm py-1 px-2 mx-auto w-[30ch] sm:w-[35ch] md:w-[45ch] transition-all duration-700 outline-orange-400"
+            {...register("tags")}
+          />
+          {errors && (
+            <FormError
+              errorMessage={errors.tags?.message?.toString()}
             />
           )}
         </label>

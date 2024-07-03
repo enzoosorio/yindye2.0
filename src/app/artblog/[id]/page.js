@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { hepta_slab_font, jost_font } from "../../../utils/fonts";
+import { hepta_slab_font, jost_font, onest_font } from "../../../utils/fonts";
 import { ButtonFavoriteBlog } from '@/components/buttonContact/buttonFavoriteBlog'
 import { auth } from "@/auth";
 import { Calification } from './_component/calification'
@@ -56,7 +56,7 @@ export default async function IndividualBlog({ params }) {
                 <p>{authorName}</p>
                 <p>{new Date(individualBlogServer.createdAt).toLocaleDateString()}</p>
             </div>
-            <div className={`text-sm ${hepta_slab_font.className} w-11/12 md:w/full 2xl:w-[1080px] mx-auto mt-14`} dangerouslySetInnerHTML={{ __html: individualBlogServer.description }} />
+            <div className={`text-base ${onest_font.className} w-11/12 md:w/full 2xl:w-[1080px] mx-auto mt-14`} dangerouslySetInnerHTML={{ __html: individualBlogServer.description }} />
             {individualBlogServer.finalImage && (
                 <Image
                     className="w-1/2 mx-auto mt-14"
