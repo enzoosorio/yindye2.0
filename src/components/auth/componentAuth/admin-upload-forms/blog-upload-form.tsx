@@ -191,7 +191,7 @@ export const UploadBlog = () => {
           )}
         </label>
         <label>
-          Etiquetas del blog <small>Por favor escribelo de esta manera : "Música,Deporte,Personal" sin las comillas</small>
+          Etiquetas del blog <small>Por favor escribelo de esta manera : &quot;Música,Deporte,Personal&quot; sin las comillas</small>
           <input
             type="text"
             placeholder="Sube los tags que deseas tener en tu blog"

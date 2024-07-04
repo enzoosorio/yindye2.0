@@ -120,7 +120,6 @@ export default function Navbar({ session }) {
             >
               <IoLogoOctocat className="text-4xl fill-third-color-orange" />
             </li>
-            {/* TODO : hacer que cuando se cambie el pathname, se cierre automaticamente esto */}
 
             <ul
               className={`absolute w-[37ch] hidden md:flex top-14 right-0 bg-third-color-orange md:mr-7 xl:mr-0 text-text-menu-mobile drop-shadow-xl font-semibold flex-col 

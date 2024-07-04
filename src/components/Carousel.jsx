@@ -45,20 +45,6 @@ export default function Carousel() {
     },
   ];
 
-  // Preload images when the component mounts
-  useEffect(() => {
-    banners.forEach((banner) => {
-      // Use priority="true" to preload the image
-      // Use loading="eager" to force the image to load immediately
-      <Image
-        src={banner.src}
-        priority={true}
-        alt="banner Image Yindye"
-        loading="eager"
-      />;
-    });
-  }, []);
-
   useEffect(() => {
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
